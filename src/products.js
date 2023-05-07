@@ -8,7 +8,8 @@ export const PRODUCTS = [
     productName: "IPhone",
     price: 999.0,
     productImage: product1,
-    category: "Phone",
+    category: "Phone", 
+    link: "/cart",
   },
   {
     id: 2,
@@ -16,12 +17,15 @@ export const PRODUCTS = [
     price: 1999.0,
     productImage: product2,
     category: "laptop",
+    link: "/cart",
   },
+
   {
     id: 3,
     productName: "Cannon M50 Camera",
     price: 699.0,
     productImage: product3,
     category: "camera",
+    link: "/cart",
   },
 ];

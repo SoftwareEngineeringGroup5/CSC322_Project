@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
-//import { NavbarNoButton } from "../components/avbar";
+//import { NavbarNoButton } from "../components/navbar";
 
 export default function Login() {
     const [email, setEmail] = useState('');
