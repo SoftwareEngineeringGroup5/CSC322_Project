@@ -7,7 +7,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = config('SQLALCHEMY_TRACK_MODIFICATIONS', cast=bool)
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI='sqllite:///'+os.path.join(BASE_DIR, 'dev.db')
+    SQLALCHEMY_DATABASE_URI='sqlite:///'+os.path.join(BASE_DIR, 'dev.db')
     DEBUG=True ## to help with debugging and loading
     SQLALCHEMY_ECHO=True
 
