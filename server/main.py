@@ -1,80 +1,45 @@
-from flask import Flask, request
-from flask_restx import Api, Resource, fields
-from config import DevConfig #import the dev config class
+from flask import Flask
+from flask_restx import Api, Resource
 from models import Product
 from extensions import db 
+from flask_migrate import Migrate
+from flask_jwt_extended import JWTManager
+from product import prod_namespace
+from auth import auth_namespace
 
 
-app=Flask(__name__) #create the flask app
-app.config.from_object(DevConfig) #set up the app config
-db.init_app(app) #initialize the database with current app
+def create_app(config):
+    app = Flask(__name__) #create the flask app
+    app.config.from_object(config) #set up the app config
+    db.init_app(app) #initialize the database with current app
+    migration=Migrate(app,db) #database migration
+    JWTManager(app) #initialize the jwt manager to work with app
+    api=Api(app,doc='/docs') # flaskapi#model serializer,with fields import 
+    api.add_namespace(prod_namespace,path='/product') #add the product namespace to the flask api
+    api.add_namespace(auth_namespace,path='/auth') #add the auth namespace to the flask api
 
-api=Api(app,doc='/docs') # flaskapi
-#model serializer,with fields import 
-product_model = api.model('Product', 
-{
-    'id': fields.Integer,
-    'title': fields.String,
-    'price': fields.Float,
-    'description': fields.String,
-    'image_link': fields.String
-})
+    @app.shell_context_processor #model serializer 
+    def make_shell_context():
+        return dict(db=db,Product=Product)
 
+    @api.route('/hello') #first route 
+    class HelloResource(Resource): #inherit the Resource class 
+        def get(self):
+            return {"message":"Hello World"}
 
-@api.route('/hello') #first route 
-class HelloResource(Resource): #inherit the Resource class 
-    def get(self):
-        return {"message":"Hello World"}
+    return app
 
-@api.route('/products') #second route 
-class ProductList(Resource): #inherit the Resource class
-    @api.marshal_list_with(product_model) #marshal the list with the model
-    def get(self):
-        products = Product.query.all() #get all the products
-        return products
-    @api.marshal_with(product_model) #marshal the single product
-    def post(self):
-        """
-        Create a new product
-        """
-        data = request.get_json()
-        new_product = Product(
-            title=data.get('title'),
-            price=data.get('price'),
-            description=data.get('description'),
-            image_link= data.get('image_link')
-        )
-
-        new_product.save()
-
-        return new_product, 201
-
-
-@api.route('/products/<int:id>') #third route
-class ProductDetail(Resource): #inherit the Resource class 
-    def get(self,id):
-        """ Get a single product by id """
-        product = Product.query.get_or_404(id)
-        return product.serialize()
-    def put(self,id):
-        """ Update a product by id """
-        pass
-    def delete(self,id):
-        """ Delete a product by id """
-        pass
+        
 
 
 
-@app.shell_context_processor
-def make_shell_context():
-    return dict(db=db,Product=Product)
+        
+
+
+
+
     
-"""
-- no need to instantiate the class, flaskRESTFUL does it for you 
--  The Resource class provides a set of methods for handling 
-HTTP requests (GET, POST, PUT, DELETE, etc.) which in this case we overide the GET class
-"""
 
 
-if __name__ == '__main__':
-    app.run()
+
+

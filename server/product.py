@@ -1,0 +1,79 @@
+from flask import Flask, request
+from flask_restx import Api, Resource, fields, Namespace
+from models import Product, User #import the models
+from extensions import db 
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import jwt_required #import the jwt requierd lib
+
+
+prod_namespace =Namespace('products', description='Product related operations')
+
+product_model = prod_namespace.model('Product', 
+{
+    'id': fields.Integer,
+    'title': fields.String,
+    'price': fields.Float,
+    'description': fields.String,
+    'image_link': fields.String
+})
+
+@prod_namespace.route('/allproducts') #second route 
+class ProductList(Resource): #inherit the Resource class
+    @prod_namespace.marshal_list_with(product_model) #marshal the list with the model
+    def get(self):
+        products = Product.query.all() #get all the products
+        return products
+    
+    @prod_namespace.marshal_with(product_model) #marshal the single product
+    @prod_namespace.expect(product_model)
+    @jwt_required()
+    def post(self):
+        """
+        Create a new product
+        """
+        data = request.get_json()
+        new_product = Product(
+            title=data.get('title'),
+            price=data.get('price'),
+            description=data.get('description'),
+            image_link= data.get('image_link')
+        )
+        new_product.save()
+
+        return new_product, 201
+        
+    @jwt_required()
+    def delete(self):
+        """
+        Delete a product
+        """
+        pass
+
+
+@prod_namespace.route('/products/<int:id>') #third route
+class ProductDetail(Resource): #inherit the Resource class 
+    @prod_namespace.marshal_with(product_model)
+    def get(self,id):
+        """ Get a single product by id """
+        product_to_get = Product.query.get_or_404(id) #get the product by id
+        return product_to_get #return the product
+
+    @prod_namespace.marshal_with(product_model)
+    @jwt_required()
+    def put(self,id):
+        """
+        Update a product by id 
+        """
+        product_to_update = Product.query.get_or_404(id)    #query the product by id
+        data = request.get_json()   #jsonify the data
+        product_to_update.update(data.get('title'), data.get('price'), data.get('description'), data.get('image_link')) #update the product
+        return product_to_update
+    
+    @prod_namespace.marshal_with(product_model)
+    @jwt_required()
+    def delete(self,id):
+        """ Delete a product by id """
+        product_to_delete = Product.query.get_or_404(id)    # look for the product by id
+        product_to_delete.delete()  #delete the product
+        return product_to_delete, 204   # return the product
+

@@ -10,6 +10,7 @@ flask-restx = "*"
 flask-sqlalchemy = "*"
 flask-jwt-extended = "*"
 python-decouple = "*"
+flask-migrate = "*"
 
 [dev-packages]
 
