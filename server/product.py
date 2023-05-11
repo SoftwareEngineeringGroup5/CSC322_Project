@@ -11,7 +11,7 @@ prod_namespace =Namespace('products', description='Product related operations')
 product_model = prod_namespace.model('Product', 
 {
     'id': fields.Integer,
-    'title': fields.String,
+    'name': fields.String,
     'price': fields.Float,
     'description': fields.String,
     'image_link': fields.String
@@ -33,10 +33,10 @@ class ProductList(Resource): #inherit the Resource class
         """
         data = request.get_json()
         new_product = Product(
-            title=data.get('title'),
+            name=data.get('name'),
             price=data.get('price'),
             description=data.get('description'),
-            image_link= data.get('image_link')
+            image_url= data.get('image_link')
         )
         new_product.save()
 
@@ -66,7 +66,7 @@ class ProductDetail(Resource): #inherit the Resource class
         """
         product_to_update = Product.query.get_or_404(id)    #query the product by id
         data = request.get_json()   #jsonify the data
-        product_to_update.update(data.get('title'), data.get('price'), data.get('description'), data.get('image_link')) #update the product
+        product_to_update.update(data.get('name'), data.get('price'), data.get('description'), data.get('image_url')) #update the product
         return product_to_update
     
     @prod_namespace.marshal_with(product_model)
