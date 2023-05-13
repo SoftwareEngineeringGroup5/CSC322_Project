@@ -25,10 +25,9 @@ export const Navbar = () => {
         </Link>
         <Link to="/pages/login">
         <User size={32} />
+
         </Link>
       </div>
-
-
     </div>
   );
 };
