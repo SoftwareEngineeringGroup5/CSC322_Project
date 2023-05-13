@@ -1,6 +1,7 @@
 
 import React, { useContext, useState , useEffect} from 'react'
 import { ShopContext } from '../../context/shop-context';
+import { Navbar } from '../../components/navbar';
 import { Stack, Button, Box, Paper, TextField, Typography, Container } from '@mui/material';
 import { PRODUCTS } from '../../products';
 
@@ -49,11 +50,8 @@ export const DisplayProduct = (props) => {
       <Box textAlign="center">
         <Box textAlign='center' sx={{ p: 2, border: 2, mb: 5 }}>
           <img src={productImage} alt="" height="420" width="327"/>
-          <Typography sx={{ fontSize: 32 ,fontWeight: 'bold' }}>
+          <Typography>
             {productName}
-          </Typography>
-          <Typography sx={{ fontSize: 36 }}>
-            ${price}
           </Typography>
           <Button 
             style={{ 
