@@ -1,6 +1,7 @@
 
 import React, { useContext, useState , useEffect} from 'react'
 import { ShopContext } from '../../context/shop-context';
+import { Navbar } from '../../components/navbar';
 import { Stack, Button, Box, Paper, TextField, Typography, Container } from '@mui/material';
 import { PRODUCTS } from '../../products';
 
@@ -30,6 +31,7 @@ export const DisplayProduct = (props) => {
 
     return (
       <Stack spacing={1}>
+        <Navbar />
         {reviewsState.map((comment, index) => (
           <Paper elevation={1} sx={{ p: 2}} key={index}>
             <Typography>

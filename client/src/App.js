@@ -11,14 +11,11 @@ import { Viewproduct } from "./pages/viewProductPages/viewproduct";
 import { EmployeeDashboard } from './pages/dashboards/employeeDashboard';
 import { FlaskProductList } from "./FlaskProductList";
 
-
-
 function App() {
   return (
     <div className="App">
       <ShopContextProvider>
-        <Router>  
-          <Navbar />
+        <Router>
           <Routes>
             <Route path='build' element={<Build/>}/>
             <Route path="/" element={<Shop />} />
