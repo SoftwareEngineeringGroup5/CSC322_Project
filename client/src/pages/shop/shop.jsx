@@ -4,11 +4,13 @@ import { Product } from "./product";
 import "./shop.css";
 import "../../App.css";
 import Avatar from '../../Chatbox/avatar';
+import { Navbar } from '../../components/navbar';
 
 export const Shop = () => {
   return (
 
     <div className='shop'>
+        <Navbar/>
         <div className='shopTitle'>
             <h1>PC Palace</h1>
         </div>
