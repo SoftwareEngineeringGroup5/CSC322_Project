@@ -20,7 +20,7 @@ def create_app(config):
     
     with app.app_context():
          databasecreation(db)
-    JWTManager(app) #initialize the jwt manager to work with app
+    jwt=JWTManager(app) #initialize the jwt manager to work with app
     api=Api(app,doc='/docs') # flaskapi#model serializer,with fields import 
     api.add_namespace(prod_namespace,path='/product') #add the product namespace to the flask api
     api.add_namespace(auth_namespace,path='/auth') #add the auth namespace to the flask api

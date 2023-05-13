@@ -9,6 +9,7 @@ prod_namespace =Namespace('products', description='Product related operations')
 
 product_model = prod_namespace.model('Product', 
 {
+    "id": fields.String,
     "name": fields.String,
     "price":fields.String,
     "description": fields.String,
