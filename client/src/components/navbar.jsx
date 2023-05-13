@@ -51,12 +51,37 @@ export const EmployeeNavbar = () => {
         </Typography>
       </Box>
 
+      <IconButton disableRipple sx={{p: 5}}>
+        <Badge color="secondary" badgeContent={2}>
+          <MailIcon fontSize="large" />
+        </Badge>
+      </IconButton>
       
-          <IconButton disableRipple sx={{p: 5}}>
-            <Badge color="secondary" badgeContent={2}>
-              <MailIcon fontSize="large" />
-            </Badge>
-          </IconButton>
+    </Box>
+  );
+};
+
+export const OwnerNavbar = () => {
+  return (
+    <Box 
+      sx={{ display:"flex",
+            flexDirection:"row",
+            justifyContent:"space-between",
+            height: 100, 
+            backgroundColor: "#486DF0"
+      }}
+    >
+      <Box sx={{ p: 2.5}}>
+        <Typography fontSize={36} >
+          Welcome, Owner
+        </Typography>
+      </Box>
+
+      <IconButton href="/messages" disableRipple sx={{p: 5}}>
+        <Badge color="secondary" badgeContent={2}>
+          <MailIcon fontSize="large" />
+        </Badge>
+      </IconButton>
       
     </Box>
   );

@@ -31,7 +31,6 @@ export const DisplayProduct = (props) => {
 
     return (
       <Stack spacing={1}>
-        <Navbar />
         {reviewsState.map((comment, index) => (
           <Paper elevation={1} sx={{ p: 2}} key={index}>
             <Typography>
