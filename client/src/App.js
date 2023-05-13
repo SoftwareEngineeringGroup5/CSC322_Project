@@ -7,6 +7,8 @@ import { Build } from "./pages/build/build";
 import { Login } from "./pages/login/login";
 import { SignUp } from "./pages/signup/signup";
 import { Viewproduct } from "./pages/viewProductPages/viewproduct";
+import { ApplicatonPage }from "./pages/application/applicationPage" ;
+import { OwnerPage } from './pages/application/ownersPage';
 import { EmployeeDashboard } from './pages/dashboards/employeeDashboard';
 import { OwnerDashboard } from './pages/dashboards/ownerDashboard';
 import { FlaskProductList } from "./FlaskProductList";

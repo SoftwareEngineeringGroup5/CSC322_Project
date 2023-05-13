@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import "./viewproduct.css";
 import { Navbar } from '../../components/navbar';
 
-
 export const Viewproduct = () => {
   const {productlinkID} = useParams()
   const viewProductURL = "/product/" + productlinkID
