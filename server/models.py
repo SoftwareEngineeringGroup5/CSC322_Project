@@ -5,9 +5,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-
-
-
 class Employee(db.Model):
    __tablename__='employees'
    id = db.Column('id',db.Integer, primary_key=True,autoincrement=True)
@@ -48,6 +45,10 @@ class Owner(db.Model, UserMixin):
         return {'id':self.id,'username':self.username, 
                 'password':self.password}
     
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+    
 class Customer(db.Model, UserMixin):
     __tablename__='customers'
     id = db.Column('id',db.Integer, primary_key=True,autoincrement=True)
@@ -82,11 +83,12 @@ class Customer(db.Model, UserMixin):
                 'balance':self.balance, 'discount':self.balance}
 
 class Product(db.Model):
+    __tablename__='products'
     id=db.Column('id',db.Integer(),primary_key=True) #specify as primary key
     name=db.Column('name',db.String(),nullable=False) #specify as nullable and string
     price=db.Column('price',db.Float(),nullable=False) 
-    description=db.Column('image_url',db.String(),nullable=False)
-    image_url=db.Column(db.String(),nullable=False)
+    description=db.Column('description',db.String(),nullable=False)
+    image_url=db.Column('image_url',db.String(),nullable=False)
     product_type = db.Column('product_type', db.String(20))  # type include:desktop, laptop, motherboard, case, cpu,RAM
     use = db.Column('use', db.String(20))  # use may be:business, academic, gaming or all
     match = db.Column('match', db.String(20))  # Intel->for all products that match intel CPU, AMD->match AMD,# both->for both, '-' if it is a desktop or laptop,  creater_id if it is configuration
@@ -94,7 +96,14 @@ class Product(db.Model):
 
     #function to help return string representation of the class 
     def __repr__(self):
-        return f"Product('{self.name}','{self.email}','{self.password}','{self.first_name}','{self.last_name}','{self.balance}')"
+        return {
+                'name':self.name,
+                'price':self.price,
+                'description':self.description,
+                'image_url':self.image_url,
+                'product_type':self.product_type,
+                'use':self.use,
+              'match':self.match}
 
 
     """
@@ -134,12 +143,12 @@ class Rating(db.Model):
         def save(self):
             db.session.add(self)
             db.session.commit()
-            
+
 class Comment(db.Model):
-        __tablename__='coments'
+        __tablename__='comments'
         id= db.Column('id',db.Integer, primary_key=True,autoincrement=True)
         text=db.Column('text',db.String(500))
-        commentator_status=db.Column('commentator_statu',db.String(15))#status is visitor/customer/employee/owner
+        commentator_status=db.Column('commentator_status',db.String(15))#status is visitor/customer/employee/owner
         commentator_id=db.Column('commentator_id',db.Integer, db.ForeignKey('customers.id'))
         product_id=db.Column('product_id',db.Integer, db.ForeignKey('products.id'))
 

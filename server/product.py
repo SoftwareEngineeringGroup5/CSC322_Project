@@ -1,8 +1,7 @@
 from flask import Flask, request
 from flask_restx import Api, Resource, fields, Namespace
-from models import Product, User #import the models
+from models import Product #import the models
 from extensions import db 
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import jwt_required #import the jwt requierd lib
 
 
@@ -10,14 +9,16 @@ prod_namespace =Namespace('products', description='Product related operations')
 
 product_model = prod_namespace.model('Product', 
 {
-    'id': fields.Integer,
-    'name': fields.String,
-    'price': fields.Float,
-    'description': fields.String,
-    'image_link': fields.String
+    "name": fields.String,
+    "price":fields.String,
+    "description": fields.String,
+    "image_url": fields.String,
+    "product_type": fields.String,
+    "use":fields.String,
+    "match": fields.String
 })
 
-@prod_namespace.route('/allproducts') #second route 
+@prod_namespace.route('/all') #second route 
 class ProductList(Resource): #inherit the Resource class
     @prod_namespace.marshal_list_with(product_model) #marshal the list with the model
     def get(self):
@@ -66,6 +67,28 @@ class ProductDetail(Resource): #inherit the Resource class
         """
         product_to_update = Product.query.get_or_404(id)    #query the product by id
         data = request.get_json()   #jsonify the data
+
+        """
+        "name": fields.String,
+    "price":fields.String,
+    "description": fields.String,
+    "image_url": fields.String,
+    "product_type": fields.String,
+    "use":fields.String,
+    "match": fields.String
+        """
+
+        product_to_update.update(
+            data.get('name'),
+            data.get('price'), 
+            data.get('description'), 
+            data.get('image_url'),
+            data.get('product_type'),
+            data.get('use'),
+            data.get('match')
+            
+            ) #update the product
+
         product_to_update.update(data.get('name'), data.get('price'), data.get('description'), data.get('image_url')) #update the product
         return product_to_update
     
