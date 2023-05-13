@@ -6,115 +6,81 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-Base = declarative_base(cls=db.Model)
 
-"""
-modelling for user: 
-    id: integer
-    username: string
-    email: string
-    password: string
-    first_name: string
-    last_name: string
-    role: Employee, Customer, Manage, Owner
-    warning: String
-    balance: float
-    Status: Active, Inactive, Pending
-    Compliment: integer
-"""
 
-class User(Base, UserMixin):
-    __tablename__='users'
-    id=db.Column(db.Integer(),primary_key=True) #specify as primary key
-    username=db.Column(db.String(25),nullable=False, unique=True) #require 25 chars 
-    first_name=db.Column(db.String(25),nullable=False)
-    last_name=db.Column(db.String(25),nullable=False)
-    email=db.Column(db.String(80),nullable=False) # require 80 chars 
-    password=db.Column(db.Text(),nullable=False)
-    role=db.Column(db.Enum('Employee','Customer','Owner'),nullable=False)
+class Employee(db.Model):
+   __tablename__='employees'
+   id = db.Column('id',db.Integer, primary_key=True,autoincrement=True)
+   username = db.Column('username',db.String(50), nullable=False,unique=True)
+   password = db.Column('password',db.String(50),nullable=False)
+   no_warnings=db.Column('no_warnings',db.Integer, default=0)
+   no_compliments=db.Column('no_compliments',db.Integer, default=0)
+   wage=db.Column('wage',db.Float, default=500) 
 
-    __mapper_args__ = {
-        "polymorphic_identity": "user",
-        "polymorphic_on": "role",
-    }
+   def __init__(self, username,password, 
+                no_warnings=0,no_compliments=0,wage=500):
+        self.username = username
+        self.password = password
+        self.no_warnings = no_warnings
+        self.no_compliments=no_compliments
+        self.wage=wage
 
+   def __repr__(self):
+    return {'id':self.id,'username':self.username, 
+            'password':self.password,'no_warnings':self.no_warnings,
+            'no_compliments':self.no_compliments, 'wage':self.wage}
+   
+   def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+class Owner(db.Model, UserMixin):
+    __tablename__='owner'
+    id = db.Column('id',db.Integer, primary_key=True,autoincrement=True, unique=True)
+    username = db.Column('username',db.String(50),nullable=False)
+    password = db.Column('password',db.String(50),nullable=False)
+
+    def __init__(self,  username, password):
+
+        self.username=username
+        self.password=password
     def __repr__(self):
-        return f"User('{self.username}, {self.email}')"
-
-    def __init__(self, username,email,password, first_name, last_name) :
-        
-            self.username=username
-            self.email=email
-            self.password=generate_password_hash(password)
-            self.first_name=first_name
-            self.last_name=last_name
-
+        return {'id':self.id,'username':self.username, 
+                'password':self.password}
     
+class Customer(db.Model, UserMixin):
+    __tablename__='customers'
+    id = db.Column('id',db.Integer, primary_key=True,autoincrement=True)
+    email=db.Column('email',db.String(70), nullable=False,unique=True)
+    username = db.Column('username',db.String(50), nullable=False,unique=True)
+    password = db.Column('password',db.String(50),nullable=False)
+    no_warnings=db.Column('no_warnings',db.Integer, default=0)
+    no_compliments=db.Column('no_compliments',db.Integer, default=0)
+    balance=db.Column('balance',db.Float, default=500)
+    discount=db.Column('discount',db.Integer, default=0)
+
+    def __init__(self, username,email,password, no_warnings,no_compliments,balance, discount) :
+    
+        self.username=username
+        self.email=email
+        self.password=password
+        self.no_warnings=no_warnings
+        self.no_compliments=no_compliments
+        self.balance=balance
+        self.discount=discount
     def save(self):
         db.session.add(self)
         db.session.commit()
 
-class Employee(User, UserMixin):
-        __tablename__='employees'
-        id = db.Column('id',db.Integer, db.ForeignKey('users.id'), primary_key=True,autoincrement=True)
-        no_warnings=db.Column('no_warnings',db.Integer, default=0)
-        no_compliments=db.Column('no_compliments',db.Integer, default=0)
-        wage=db.Column('wage',db.Float, default=500)
+    def __repr__(self):
+        return {'id':self.id,
+                'username':self.username,
+                'email':self.email, 
+                'password':self.password,
+                'no_warnings':self.no_warnings,
+                'no_compliments':self.no_compliments, 
+                'balance':self.balance, 'discount':self.balance}
 
-        __mapper_args__ = {
-        "polymorphic_identity": "employee",
-        }
-
-        def __init__(self, username,email, password, no_warnings=0,no_compliments=0,wage=500):
-            super().__init__(username=username, emaiil=email,password=password)
-            self.no_warnings=no_warnings
-            self.no_compliments=no_compliments
-            self.wage=wage
-        def __repr__(self):
-            return {'id':self.id,'username':self.username, 'password':self.password,'no_warnings':self.no_warnings,'no_compliments':self.no_compliments, 'wage':self.wage}
-
-class Owner(User, UserMixin):
-        __tablename__='owner'
-        id = db.Column('id',db.Integer, db.ForeignKey('users.id'), primary_key=True,autoincrement=True)
-        def __init__(self,  username, password):
-            super().__init__(username=username, password=password)
-
-        __mapper_args__ = {
-        "polymorphic_identity": "owner",
-        }
-            
-        def __repr__(self):
-            return {'id':self.id,'username':self.username, 'password':self.password}
-        
-class Customer(User, UserMixin):
-        __tablename__='customers'
-        id = db.Column('id',db.Integer, db.ForeignKey('animals.id'), primary_key=True,autoincrement=True)
-        no_warnings=db.Column('no_warnings',db.Integer, default=0)
-        no_compliments=db.Column('no_compliments',db.Integer, default=0)
-        balance=db.Column('balance',db.Float, default=500)
-        discount=db.Column('discount',db.Integer, default=0)
-
-        __mapper_args__={
-             'polymorphic_identity':'customer',
-        }
-
-
-
-    
-
-   
-        def __init__(self, username,email,password, no_warnings,no_compliments,balance, discount) :
-            super().__init__(username=username, email=email, password=password)
-            self.username=username
-            self.email=email
-            self.password=password
-            self.no_warnings=no_warnings
-            self.no_compliments=no_compliments
-            self.balance=balance
-            self.discount=discount
-        def __repr__(self):
-            return {'id':self.id,'username':self.username,'email':self.email, 'password':self.password,'no_warnings':self.no_warnings,'no_compliments':self.no_compliments, 'balance':self.balance, 'discount':self.balance}
-    
 class Product(db.Model):
     id=db.Column('id',db.Integer(),primary_key=True) #specify as primary key
     name=db.Column('name',db.String(),nullable=False) #specify as nullable and string
@@ -164,6 +130,11 @@ class Rating(db.Model):
             self.product_id=product_id
         def __repr__(self):
             return{'id':self.id, 'value':self.value,'customer_id':self.customer_id, 'product_id':self.product_id}
+
+        def save(self):
+            db.session.add(self)
+            db.session.commit()
+            
 class Comment(db.Model):
         __tablename__='coments'
         id= db.Column('id',db.Integer, primary_key=True,autoincrement=True)
