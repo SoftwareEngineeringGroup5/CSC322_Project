@@ -17,8 +17,8 @@ export const PRODUCTS = [
     id: 2,
     productName: "Macbook Pro 2022 (M1)",
     price: 1999.0,
-    productImage: product2,
-    category: "laptop",
+    productImage: "https://c1.neweggimages.com/ProductImage/34-156-153-V07.jpg",
+    category: "CPU",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product2",
   },
@@ -28,7 +28,7 @@ export const PRODUCTS = [
     price: 699.0,
     productImage: product3,
     category: "Case",
-    reviews: ["Good Product ID 3"],
+    reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product3",
   },
   {
@@ -40,4 +40,13 @@ export const PRODUCTS = [
     reviews: ["Good Product ID 3"],
     productlink: "/product/product4",
   },
+  {
+  id: 5,
+  productName: "Dell XPS 15",
+  price: 2400.0,
+  productImage: product4,
+  category: "CPU",
+  reviews: ["Good Product ID 3"],
+  productlink: "/product/product4",
+},
 ];

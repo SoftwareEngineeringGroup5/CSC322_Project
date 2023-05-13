@@ -136,31 +136,11 @@ def create_app():
     ###-----------database is ready ------------   
     @app.route('/api/products')
     def get_products():
-            products = Product.query.all()
-            return jsonify({'products': [p.__repr__() for p in products]})
-    @app.route('/login', methods=['GET', 'POST'])
-    def Login():
-        username = request.form['email']
-        password = request.form['password']
-        account = request.form['account']
-        if account=='Owner':
-          user=Owner.query.filter_by(username=username).first()
-          session_key='owner_id'
-        elif account=='Employee':
-            user=Employee.query.filter_by(username=username).first()
-            session_key='employee_id'
-        elif account=='Customer':
-            user=Customer.query.filter_by(username=username).first()
-            session_key='customer_id'
 
-        if user:
-            if user.password== password: 
-                session[session_key] = user.id
-                return jsonify({'success': True}), 200
-            else:
-                return jsonify({'status': 'error', 'message': 'Incorrect Password '})
-        else:
-             return jsonify({'status': 'error', 'message': 'Email does not exist.'}),401
+        products = Product.query.all()
+        #print(products)
+        return jsonify({'products': [p.__repr__() for p in products]})
+
 
 
     
