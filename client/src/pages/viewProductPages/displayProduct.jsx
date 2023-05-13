@@ -49,11 +49,8 @@ export const DisplayProduct = (props) => {
       <Box textAlign="center">
         <Box textAlign='center' sx={{ p: 2, border: 2, mb: 5 }}>
           <img src={productImage} alt="" height="420" width="327"/>
-          <Typography sx={{ fontSize: 32 ,fontWeight: 'bold' }}>
+          <Typography>
             {productName}
-          </Typography>
-          <Typography sx={{ fontSize: 36 }}>
-            ${price}
           </Typography>
           <Button 
             style={{ 

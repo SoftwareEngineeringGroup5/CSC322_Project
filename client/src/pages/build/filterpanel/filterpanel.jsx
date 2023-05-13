@@ -9,7 +9,6 @@ import "./filterstyle.css"
 export const Filterpanel = () => {
 
   const {resetBundleItem,setBundleThroughSuggestions} = useContext(ShopContext);
-
   return (
     <div>
       <div className='Suggested Configs'>
@@ -26,6 +25,3 @@ export const Filterpanel = () => {
     </div>
   )
 }
-
-
-

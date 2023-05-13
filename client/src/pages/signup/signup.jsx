@@ -82,7 +82,6 @@ export const SignUp = () => {
                         id="confirm-password-field"
                         placeholder="********" 
                     />
-
                     <Box mt={1}>
                         <Button
                             type="submit"
@@ -99,8 +98,7 @@ export const SignUp = () => {
                             Register
                         </Button>
                     </Box>
-                    
-
+            
                     <Grid mt={1} container>
                         <Grid item>
                             <Link href="/login" variant="body2">

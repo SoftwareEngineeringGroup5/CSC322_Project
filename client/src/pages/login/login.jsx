@@ -80,7 +80,6 @@ export const Login = () => {
                             <MenuItem value={"Customer"}>Customer</MenuItem>
                         </Select>
                     </FormControl>
-                    
                     <Button
                         type="submit"
                         variant="contained" 
@@ -94,7 +93,6 @@ export const Login = () => {
                     > 
                         Login
                     </Button>
-
                     <Grid mt={2} container>
                         <Grid item>
                             <Link href="/signup" variant="body2">

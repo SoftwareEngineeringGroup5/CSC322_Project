@@ -19,8 +19,6 @@ export const BundleItem = (props) => {
     removeFromBundle(id)
     removeBundleCategory(category)
   }
-
-
   return (
     <div className="build-Product-Card" >
       <Link to={productlink}>
@@ -32,6 +30,7 @@ export const BundleItem = (props) => {
         </p>
         <p>${price}</p>
         <p>Bundle {bundleAmount}</p>
+
         <button className='add-to-bundle' onClick={ () => handleAddToBundleClick()}>Add to Bundle</button>
         <button className='add-to-bundle' onClick={ () => handleRemoveFromBundleClick()}>Remove From Bundle</button>
         </div>

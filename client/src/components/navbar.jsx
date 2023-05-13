@@ -1,7 +1,8 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart, User } from "phosphor-react";
+import { ShoppingCart } from "phosphor-react";
+import { User } from "phosphor-react";
 import "./navbar.css";
 
 export const Navbar = () => {
@@ -22,12 +23,11 @@ export const Navbar = () => {
         <Link to="/cart">
           <ShoppingCart size={32} />
         </Link>
-        <Link to="/login">
-          <User size={32} />
+        <Link to="/pages/login">
+        <User size={32} />
+
         </Link>
       </div>
-
-
     </div>
   );
 };

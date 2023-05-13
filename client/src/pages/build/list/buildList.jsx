@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import { PRODUCTS } from '../../../products'
 import { BuildProduct } from './buildProuctList'
@@ -6,7 +5,7 @@ import "./buildList.css"
 
 export const BuildList = () => {
   return (
-=======
+    
 import React, { useContext } from 'react'
 import { PRODUCTS } from '../../../products'
 import { BuildProduct } from './buildProuctList'
@@ -37,13 +36,10 @@ export const BuildList = () => {
 
   return (
 
-  
->>>>>>> 55539d5ccb60ba04b600facf4476f2d223630366
     <div className="BuildListpage">
       <div className="buildListHeader">
         <h1><b>List</b></h1>
       </div>
-<<<<<<< HEAD
       <div className='Motherboard'>
         <h2><b>Motherboard</b></h2>
       </div>
@@ -89,7 +85,7 @@ export const BuildList = () => {
     </div>
   )
 }
-=======
+
       {!checkCurrent("Motherboard") && (
         <div className='category'>
             <div className='Motherboard'>
@@ -148,5 +144,4 @@ export const BuildList = () => {
   )} 
   </div>
 );
-};
->>>>>>> 55539d5ccb60ba04b600facf4476f2d223630366
+}; 
