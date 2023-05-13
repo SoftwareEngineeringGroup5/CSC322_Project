@@ -8,7 +8,7 @@ import { Build } from "./pages/build/build";
 import { Login } from "./pages/login/login";
 import { SignUp } from "./pages/signup/signup";
 import { Viewproduct } from "./pages/viewProductPages/viewproduct";
-
+import { FlaskProductList } from "./FlaskProductList";
 
 
 function App() {
@@ -21,9 +21,10 @@ function App() {
             <Route path='build' element={<Build/>}/>
             <Route path="/" element={<Shop />} />
             <Route path="cart" element={<Cart />} />
-            <Route path='pages/login' element={<Login/>} />
+            <Route path='/login' element={<Login/>} />
             <Route path='signup' element={<SignUp/>} />
-            <Route path='/product/:productlinkID' element={<Viewproduct/>}/> 
+            <Route path='/product/:productlinkID' element={<Viewproduct/>}/>
+            <Route path='/flaskproduct' element={<FlaskProductList/>}/> 
             
           </Routes>
         </Router>
