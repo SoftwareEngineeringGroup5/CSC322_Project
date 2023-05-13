@@ -8,9 +8,8 @@ import { Build } from "./pages/build/build";
 import { Login } from "./pages/login/login";
 import { SignUp } from "./pages/signup/signup";
 import { Viewproduct } from "./pages/viewProductPages/viewproduct";
-
-
-
+import { ApplicatonPage }from "./pages/application/applicationPage" ;
+import { OwnerPage } from './pages/application/ownersPage';
 function App() {
   return (
     <div className="App">
@@ -24,7 +23,8 @@ function App() {
             <Route path='pages/login' element={<Login/>} />
             <Route path='signup' element={<SignUp/>} />
             <Route path='/product/:productlinkID' element={<Viewproduct/>}/> 
-            
+            <Route path='/applications' element={<ApplicatonPage />}/>
+            <Route path='/owner' element={<OwnerPage/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>

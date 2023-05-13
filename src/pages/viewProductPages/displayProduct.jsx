@@ -44,6 +44,7 @@ export const DisplayProduct = (props) => {
     );
   };
 
+
   return (
     <Container component="main" sx={{ width: 700, height: 200, mb: 4 }}>
       <Box textAlign="center">
@@ -56,7 +57,7 @@ export const DisplayProduct = (props) => {
             style={{ 
               backgroundColor: 'black', 
               color: 'white' , 
-              width:'200px',  
+              width:'200px',
               borderRadius: '30px'
             }}
             className='addToCartBttn' 
