@@ -1,5 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { PRODUCTS } from "../products";
+import { SUGGESTEDCOFIGS } from "../pages/build/SuggestedConfigData";
+import { CornersIn } from "phosphor-react";
 
 export const ShopContext = createContext(null);
 
@@ -23,6 +25,8 @@ const getDefaultBundle = () => {
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [bundleItems, setBundleItems] = useState(getDefaultBundle());
+  const [currentcat, setcurrentcat] = useState([""]);
+  const [suggestionRating, setSuggestionRating] = useState(0);
 
 
   const getTotalCartAmount = () => {
@@ -46,6 +50,53 @@ export const ShopContextProvider = (props) => {
     }
     return totalBundleAmount;
   };
+
+  const setBundleThroughSuggestions = (SuggestList,rating,bundledproducts) =>{
+    //clear the current bundle
+    //setBundleItems({});
+    //replace the with the current distionary according to id of the review.
+    setBundleItems(SuggestList);
+    setSuggestionRating(rating);
+    const catergorylist = [];
+
+  for (let i = 0; i < PRODUCTS.length ; i++) {
+      const product = PRODUCTS[i];
+      console.log(product.id)
+      console.log(bundledproducts)
+      if (bundledproducts.includes(product.id)) {
+        catergorylist.push(product.category);
+        //addBundleCategory(product.category);
+      }
+    }
+    setcurrentcat([])
+    setcurrentcat(catergorylist)
+
+      // for (const id in bundledproducts){
+      //   const findid = bundledproducts[id];
+      //   const Sproduct = PRODUCTS.find(p => p.id === findid);
+      //   const category = Sproduct.category;
+      //   addBundleCategory(category);
+      //   console.log(category);
+      // }
+
+  }
+
+  const addBundleCategory = (category) => {
+    setcurrentcat([...currentcat,category])
+  }
+
+  const removeBundleCategory = (category) => {
+    const filteredArray = currentcat.filter((value) => value !== category);
+    setcurrentcat(filteredArray);
+  }
+
+  const resetBundleItem = () => {
+    setcurrentcat([])
+    setBundleItems(getDefaultBundle())
+    
+  }
+
+  
 
   const addToBundle = (itemId) => {
     setBundleItems((prev) => ({ ...prev, [itemId]: 1}))
@@ -72,6 +123,7 @@ export const ShopContextProvider = (props) => {
 
 
   const contextValue = {
+    getDefaultBundle,
     cartItems,
     addToCart,
     updateCartItemCount,
@@ -82,6 +134,12 @@ export const ShopContextProvider = (props) => {
     getTotalBundleAmount,
     addToBundle,
     removeFromBundle,
+    addBundleCategory,
+    currentcat,
+    removeBundleCategory,
+    resetBundleItem,
+    setBundleThroughSuggestions,
+    suggestionRating,
   };
 
   return (
