@@ -5,7 +5,6 @@ import { OwnerNavbar } from "../../components/navbar";
 export const OwnerDashboard = () => {
     return (
         <Box>
-            <OwnerNavbar/>
             <Grid 
                 container 
                 direction="row" 

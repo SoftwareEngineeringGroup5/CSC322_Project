@@ -5,7 +5,6 @@ import { EmployeeNavbar } from "../../components/navbar";
 export const EmployeeDashboard = () => {
     return (
         <Box>
-            <EmployeeNavbar/>
             <Grid 
                 container 
                 direction="row" 

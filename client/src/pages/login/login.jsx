@@ -1,6 +1,15 @@
 import React, { useState } from "react";
-import { Link, Grid, Box, Button, TextField, Container, Typography, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import { Navbar } from "../../components/navbar";
+import Link from "@mui/material/Link"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 export const Login = () => {
     const [email, setEmail] = useState("");
@@ -17,7 +26,6 @@ export const Login = () => {
 
     return (
         <Box>
-            <Navbar/>
             <Container component="main" maxWidth="xs">
                 <Box 
                     sx={{
