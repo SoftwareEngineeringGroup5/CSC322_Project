@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {    Link, 
-            Grid, 
-            Box, 
-            Button, 
-            TextField, 
-            Container, 
-            Typography,
-        } from "@mui/material";
-import { Navbar } from '../../components/navbar';
+import Link from "@mui/material/Link"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import TextField from '@mui/material/TextField';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 
 export const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -22,7 +20,6 @@ export const SignUp = () => {
 
     return(
         <Box>
-            <Navbar/>
             <Container component="main" maxWidth="xs">
                 <Box 
                     sx={{

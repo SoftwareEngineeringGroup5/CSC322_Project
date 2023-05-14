@@ -6,18 +6,21 @@ export const USERDATA = [
         status: "pending",
         message: "",
     },
+    
     {
         id: 2,
         username: "gabby21_x3",
         status: "pending",
         message: "",
     },
+
     {
         id: 3,
         username: "hasnain.bhojani72",
         status: "rejected",
         message: "Not enough funds",
-    },   
+    },
+
     {
         id: 4,
         username: "dalitso_banda",
