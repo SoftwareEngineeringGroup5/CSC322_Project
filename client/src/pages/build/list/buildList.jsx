@@ -39,7 +39,7 @@ export const BuildList = () => {
             <div className="buildPC-product">
             {PRODUCTS.map((product) => (
               product.category === "Motherboard" ? (
-                      <BuildProduct data = {product} key = {product.category} /> 
+                      <BuildProduct data = {product} key = {product.category}/> 
               ) :(
                 <React.Fragment key={product.category}></React.Fragment>
               )
@@ -76,7 +76,7 @@ export const BuildList = () => {
             <div className="buildPC-product">
               {PRODUCTS.map((product) => (
                 product.category === "Case" ? (
-                        <BuildProduct data = {product} key = {product.category} /> 
+                        <BuildProduct data = {product} key = {product.category}/> 
                 ) :(
                   <React.Fragment key={product.category}></React.Fragment>
                 )

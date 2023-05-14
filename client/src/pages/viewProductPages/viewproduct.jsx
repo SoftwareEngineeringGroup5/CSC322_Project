@@ -4,7 +4,7 @@ import { PRODUCTS } from "../../products";
 import { DisplayProduct } from './displayProduct';
 import { useParams } from 'react-router-dom';
 import "./viewproduct.css";
-
+import { Navbar } from '../../components/navbar';
 
 export const Viewproduct = () => {
   const {productlinkID} = useParams()
@@ -12,6 +12,7 @@ export const Viewproduct = () => {
 
   return (
     <div className='individual-shop-card'>
+      <Navbar/>
       <div className='shop_page'>
           <h1>Product Page </h1>
       </div>

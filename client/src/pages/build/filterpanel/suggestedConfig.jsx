@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react'
 import { ShopContext } from '../../../context/shop-context'
 
@@ -9,6 +8,5 @@ export const SuggestedConfig = (props) => {
 
   return (
     <button className='suggested-button' onClick={() => setBundleThroughSuggestions(selectedProducts, rating, bundledproductsuggest)} >{configName}</button>
-      
   )
 }

@@ -132,6 +132,24 @@ class Comment(db.Model):
             return{'id':self.id, 'text':self.text,'commentator_id':self.commentator_id, 'commentator_status':self.commentator_status,'product_id':self.product_id}
 
 
+class Configuration(db.Model):
+        __tablename__='configurations'
+        id= db.Column('id',db.Integer, primary_key=True,autoincrement=True)
+        motherboard=db.Column('motherboard',db.Integer, db.ForeignKey('products.id'))
+        CPU=db.Column('CPU',db.Integer, db.ForeignKey('products.id'))
+        RAM=db.Column('RAM',db.Integer, db.ForeignKey('products.id'))
+        Case=db.Column('Case',db.Integer, db.ForeignKey('products.id'))
+
+        def __init__(self, motherboard_id, CPU_id,RAM_id, Case_id):
+        
+            self.motherboard=motherboard_id
+            self.CPU=CPU_id
+            self.RAM=RAM_id
+            self.Case=Case_id
+           
+        def __repr__(self):
+            return{'id':self.id, 'motherboard':self.motherboard,'CPU':self.CPU, 'RAM':self.RAM,'Case':self.Case}
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'

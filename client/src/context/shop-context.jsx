@@ -28,7 +28,6 @@ export const ShopContextProvider = (props) => {
   const [currentcat, setcurrentcat] = useState([""]);
   const [suggestionRating, setSuggestionRating] = useState(0);
 
-
   const getTotalCartAmount = () => {
     let totalAmount = 0;
     for (const item in cartItems) {
@@ -95,8 +94,6 @@ export const ShopContextProvider = (props) => {
     setBundleItems(getDefaultBundle())
     
   }
-
-  
 
   const addToBundle = (itemId) => {
     setBundleItems((prev) => ({ ...prev, [itemId]: 1}))
