@@ -7,10 +7,10 @@ import { OwnerComp } from './appComponent';
 export const OwnerPage = () => {
     return(
         <div > 
-         <h1>
+         <h1 className='UserComps'>
         Owner's Page
         </h1> 
-        <div className='User-Comps'>
+        <div>
         {USERDATA.map((data) => {
                 if (data.status === 'rejected') {
                 return <OwnerComp

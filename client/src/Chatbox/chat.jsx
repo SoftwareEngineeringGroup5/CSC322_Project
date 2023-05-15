@@ -14,10 +14,8 @@ const ChatBox = () => {
 
   const filter = new badWords();
   const handleFormSubmit = (e) => {
-
     e.preventDefault();
     const filteredMessage = filter.clean(inputValue);
-    
 
     setMessages([
       ...messages,
@@ -38,13 +36,26 @@ const ChatBox = () => {
       </div>
       <form onSubmit={handleFormSubmit}>
         <TextField
+        sx={{ 
+          width: '500px' ,
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: 'black', // Customize the outline border color
+            },
+          },
+      }}
           type="text"
+          rows='3'
           placeholder="Type your message here"
           value={inputValue}
           onChange={handleInputChange}
+          InputProps={{
+            style: {
+              padding: '15px',  borderRadius: '20px', // Customize the padding as desired
+            }}}
         />
 
-        <button type="submit">Send</button>
+        {/* <button type="submit">Send</button> */}
       </form>
     </div>
   );

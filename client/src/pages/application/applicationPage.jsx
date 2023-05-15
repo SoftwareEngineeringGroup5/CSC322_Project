@@ -6,8 +6,8 @@ export const ApplicatonPage = () => {
     return(
         <div>
 
-            <h1> Users Applications</h1>
-            <div className='User-Comps'>
+            <h1 className='UserComps'>  Users Applications</h1>
+            <div>
             {USERDATA.map((data) => {
                 if (data.status === 'pending') {
                 return <AppComponent key={data.id} message={data.message} data={data}             
@@ -19,7 +19,6 @@ export const ApplicatonPage = () => {
 })}
             </div>
 
-        </div>
-        
+        </div>  
     )
 }
