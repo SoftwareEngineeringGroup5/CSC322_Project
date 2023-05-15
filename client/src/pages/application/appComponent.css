@@ -1,40 +1,47 @@
-/* .User-Comps{
-    border: 200px;
-    border-color: black;
-} */
+.UserComps{
+    margin: 30px;
+    text-align: center;
+}
 
-.boxes {
-    /* display: flex; */
+.boxes { 
     background-color: white;
-    margin: 15px;
+    margin: 10px;
     padding:10px;
-    font-size: 30px;
+    border-width: 2px; /* Adjust the border width as desired */
+    border-style: solid; /* Specify the border style */
+    border-color: black;
     border-radius: 30px;
-    /* border: 20px;
-    border-color: black; */
-    /* height: 100px; */
 }
 
 .flex{
     display: flex;
-}
-.info{
-    margin-right: 50px;
-    margin-top: 30px; 
-    padding-left: 30px;
+    align-items: center;
+    justify-content: center;
 
 }
+
 .info1{
     margin-top:30px; 
     margin-right: 50px;
-    padding-left: 10px;
+    padding-left: 50px;
     padding-right: 30px;
-    font-size: 15px;
+    font-size: 20px;
+
 
     
 }
 .info2{
-    margin-left:150px;
+    margin-right: 110px;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
 }
+
+.stack{
+    display: flex;
+    flex-direction: column;
+}
+
+.button:hover {
+    opacity: 0.7;
+    cursor: allowed;
+  }
