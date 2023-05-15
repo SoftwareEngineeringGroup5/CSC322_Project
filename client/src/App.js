@@ -28,9 +28,10 @@ const NavbarController = () => {
 function App() {
   return (
     <div className="App">
-      <NavbarController/>
+      
       <ShopContextProvider>
         <Router>
+        <NavbarController/>
           <Routes>
             <Route path='/build' element={<Build/>}/>
             <Route path="/" element={<Shop/>}/>

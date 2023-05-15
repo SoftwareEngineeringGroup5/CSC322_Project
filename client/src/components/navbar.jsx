@@ -1,4 +1,4 @@
-import React from "react";
+import React,  { useContext }  from "react";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,7 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import Person from "@mui/icons-material/Person";
 import Home  from "@mui/icons-material/Home";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import { Link } from "react-router-dom";
 import { Balances } from "../pages/balance/userBalances";
 
 const userID = 0;
@@ -43,13 +44,15 @@ export const CustomerNavbar = () => {
 
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
 
+      <Link to ="/cart"> 
         <Tooltip title="Cart">
-          <IconButton href="/cart" disableRipple >
-            <Badge color="secondary" badgeContent={2}>
-              <ShoppingCart fontSize="large" />
-            </Badge>
-          </IconButton>
-        </Tooltip>
+              <IconButton disableRipple >
+                <Badge color="secondary">
+                  <ShoppingCart fontSize="large" />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            </Link>
 
         <Tooltip title="Home">
           <IconButton href="/" disableRipple >
