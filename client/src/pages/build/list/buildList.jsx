@@ -4,14 +4,19 @@ import { BuildProduct } from './buildProuctList'
 import { ShopContext } from '../../../context/shop-context'
 import "./buildList.css"
 export const BuildList = () => {
-  const {currentcat} = useContext(ShopContext);
+
+
+  const {currentcat, bundleMatch} = useContext(ShopContext);
+  
   const currentCategoryList = currentcat;
   const currentCatLength = currentcat.length;
+  const displayProductID = bundleMatch;
   const checkCurrent = (catogoryName) => {
     if (currentCategoryList.includes(catogoryName)) {
       return true;
     }
   };
+
   if (checkCurrent("Motherboard") && checkCurrent("CPU") && checkCurrent("Case")) {
     return (
       <div>
@@ -31,8 +36,10 @@ export const BuildList = () => {
             </div>
             <div className="buildPC-product">
             {PRODUCTS.map((product) => (
-              product.category === "Motherboard" ? (
-                      <BuildProduct data = {product} key = {product.category} data = {product} />
+
+              product.category === "Motherboard" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
+                      <BuildProduct data = {product} key = {product.category}/> 
+
               ) :(
                 <React.Fragment key={product.category}></React.Fragment>
               )
@@ -46,8 +53,10 @@ export const BuildList = () => {
               <h2><b>CPU</b></h2>
                 <div className="buildPC-product">
                     {PRODUCTS.map((product) => (
-                      product.category === "CPU" ? (
-                              <BuildProduct data = {product} key = {product.category} data = {product} />
+
+                      product.category === "CPU" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
+                              <BuildProduct data = {product} key = {product.category} /> 
+
                       ) :(
                         <React.Fragment key={product.category}></React.Fragment>
                       )
@@ -62,8 +71,10 @@ export const BuildList = () => {
             <h2><b>Case</b></h2>
             <div className="buildPC-product">
               {PRODUCTS.map((product) => (
-                product.category === "Case" ? (
-                        <BuildProduct data = {product} key = {product.category} data = {product} />
+
+                product.category === "Case" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
+                        <BuildProduct data = {product} key = {product.category}/> 
+
                 ) :(
                   <React.Fragment key={product.category}></React.Fragment>
                 )

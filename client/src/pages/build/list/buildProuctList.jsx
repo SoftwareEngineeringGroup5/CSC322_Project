@@ -33,7 +33,6 @@ export const BuildProduct = (props) => {
         <p>Bundle {bundleAmount}</p>
         <button className='add-to-bundle' onClick={ () => handleAddToBundleClick()}>Add to Bundle</button>
         <button className='add-to-bundle' onClick={ () => handleRemoveFromBundleClick()}>Remove From Bundle</button>
-
         </div>
     </div>
   )

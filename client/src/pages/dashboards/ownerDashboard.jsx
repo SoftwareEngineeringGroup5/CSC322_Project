@@ -1,8 +1,8 @@
-import { Box, Grid, Button } from "@mui/material";
+import { Box, Grid, Button, Paper } from "@mui/material";
 import React from "react";
-import { EmployeeNavbar } from "../../components/navbar";
+import { OwnerNavbar } from "../../components/navbar";
 
-export const EmployeeDashboard = () => {
+export const OwnerDashboard = () => {
     return (
         <Box>
             <Grid 
@@ -26,7 +26,7 @@ export const EmployeeDashboard = () => {
                             borderRadius: '30px'
                         }}
                     > 
-                        Review Applications
+                        Review Compliments/Compliants
                     </Button>
                 </Grid>
 
@@ -45,7 +45,7 @@ export const EmployeeDashboard = () => {
                             borderRadius: '30px'
                         }}
                     > 
-                        Manage Products
+                        Store Metrics
                     </Button>
                 </Grid>
             </Grid>

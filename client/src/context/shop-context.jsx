@@ -27,6 +27,8 @@ export const ShopContextProvider = (props) => {
   const [bundleItems, setBundleItems] = useState(getDefaultBundle());
   const [currentcat, setcurrentcat] = useState([""]);
   const [suggestionRating, setSuggestionRating] = useState(0);
+  const [bundleMatch, setBundleMatch] = useState([]);
+  const [allIDinBundle , setAllIDinBundle] = useState([0]);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -60,8 +62,6 @@ export const ShopContextProvider = (props) => {
 
   for (let i = 0; i < PRODUCTS.length ; i++) {
       const product = PRODUCTS[i];
-      console.log(product.id)
-      console.log(bundledproducts)
       if (bundledproducts.includes(product.id)) {
         catergorylist.push(product.category);
         //addBundleCategory(product.category);
@@ -80,27 +80,96 @@ export const ShopContextProvider = (props) => {
 
   }
 
+
+  const getAllKeysInBundle = () => {
+    let allKeys = Object.entries(bundleItems)
+  .filter(([key, value]) => value === 1)
+  .map(([key, value]) => key);
+  
+  let IdInBundle = allKeys.map((item) => Number(item));
+  setAllIDinBundle(IdInBundle)
+  return IdInBundle;
+
+};
+
+
+  //Matching all the products to configeration to other products.
+  // const addAllMatch = () => { 
+  //   let IDArray = getAllKeysInBundle();
+  //   for (let i = 0; i < IDArray.length; i++) {
+  //     const product = PRODUCTS[i];
+      
+  //   }
+
+// const findCommonMatches = () => {
+//   const commonMatches = [];
+//   const ID = getAllKeysInBundle()
+//   // Iterate over each product in the PRODUCTS array
+//   PRODUCTS.forEach(product => {
+//     // Check if the product's ID is in the ID array
+//     if (ID.includes(product.id)) {
+//       // If the product's ID is in the ID array, add its match array to the commonMatches array
+//       commonMatches.push(product.match);
+//     }
+//   });
+
+//   // Use the reduce method to find the common elements in the match arrays
+//   return commonMatches.reduce((accumulator, current) => {
+//     // Use the every method to check if each element in the current array is also in the accumulator array
+//     return accumulator.filter(x => current.includes(x));
+//   });
+  
+//   setBundleMatch(commonMatches);
+
+// };
+
+
+function findCommonMatch() {
+  const ID = getAllKeysInBundle();
+  let commonMatch = PRODUCTS.filter((product) => ID.includes(product.id))
+    .map((product) => product.match)
+    .reduce((prev, curr) => {
+      return prev.filter((val) => curr.includes(val));
+    });
+
+  return commonMatch;
+}
+
+  
+
   const addBundleCategory = (category) => {
     setcurrentcat([...currentcat,category])
-  }
+  };
 
   const removeBundleCategory = (category) => {
     const filteredArray = currentcat.filter((value) => value !== category);
     setcurrentcat(filteredArray);
-  }
+  };
 
   const resetBundleItem = () => {
     setcurrentcat([])
     setBundleItems(getDefaultBundle())
-    
-  }
+    setBundleMatch([]);
+  };
 
   const addToBundle = (itemId) => {
-    setBundleItems((prev) => ({ ...prev, [itemId]: 1}))
+    setBundleItems((prev) => ({ ...prev, [itemId]: 1}))    
+  };
+
+  const checkconsolelogs = () =>{
+    console.log(bundleItems)
+    console.log(allIDinBundle)
+    console.log(bundleMatch)
+    setBundleMatch(findCommonMatch());
   }
+
+  
   const removeFromBundle = (itemId) => {
     setBundleItems((prev) => ({ ...prev, [itemId]: 0}))
-  }
+    if (bundleMatch.length === 0) {
+      setBundleMatch([]);
+    }
+  };
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -137,6 +206,8 @@ export const ShopContextProvider = (props) => {
     resetBundleItem,
     setBundleThroughSuggestions,
     suggestionRating,
+    bundleMatch,
+    checkconsolelogs,
   };
 
   return (
