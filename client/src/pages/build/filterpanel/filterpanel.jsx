@@ -8,7 +8,7 @@ import "./filterstyle.css"
 
 export const Filterpanel = () => {
 
-  const {resetBundleItem,setBundleThroughSuggestions} = useContext(ShopContext);
+  const {resetBundleItem,setBundleThroughSuggestions,checkconsolelogs} = useContext(ShopContext);
   return (
     <div>
       <div className='Suggested Configs'>
@@ -20,6 +20,7 @@ export const Filterpanel = () => {
           {SUGGESTEDCOFIGS.map((Suggested) => (
             <SuggestedConfig data = {Suggested} />
           ))}
+          <button className='suggested-button' onClick={ () => checkconsolelogs()} >Console.logs</button>
         </div>
       </div>
     </div>
