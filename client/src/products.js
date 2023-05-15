@@ -12,6 +12,7 @@ export const PRODUCTS = [
     category: "Motherboard",
     reviews: ["Great product ID 1"],
     productlink: "/product/product1",
+    match: [2,3,5],
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ export const PRODUCTS = [
     category: "CPU",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product2",
+    match: [1,5],
   },
   {
     id: 3,
@@ -30,24 +32,27 @@ export const PRODUCTS = [
     category: "Case",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product3",
+    match: [1],
   },
   {
     id: 4,
     productName: "Dell XPS 15",
     price: 2400.0,
     productImage: product4,
-    category: "Motherboard",
+    category: "Case",
     reviews: ["Good Product ID 3"],
     productlink: "/product/product4",
+    match: [1],
   },
   
   {
   id: 5,
-  productName: "Dell XPS 15",
+  productName: "Dell XPS 13 test",
   price: 2400.0,
   productImage: product4,
   category: "CPU",
   reviews: ["Good Product ID 3"],
   productlink: "/product/product4",
+  match: [1],
 },
 ];
