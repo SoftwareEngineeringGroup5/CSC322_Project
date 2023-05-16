@@ -12,14 +12,14 @@ import { OwnerPage } from './pages/application/ownersPage';
 import { Balance } from './pages/balance/balance';
 import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
-import { CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
-import {ChatPage} from './Chatbox/ChatPage';
+import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
+import { ChatPage } from './Chatbox/ChatPage';
 
 const user = "Customer";
 
 const NavbarController = () => {
   switch(user) {
-    case "Visitor": 
+    case "Visitor":   return (<VisitorNavbar/>)
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);
     case "Owner":     return (<OwnerNavbar/>);

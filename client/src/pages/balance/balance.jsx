@@ -1,18 +1,15 @@
 import { Button, Box, TextField, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { Balances } from "./userBalances";
-
-const userID = 0;
+import React, { useContext, useState } from "react";
+import { ShopContext } from "../../context/shop-context";
 
 export const Balance = () => {
-    const [balance, setBalance] = useState(Balances[userID].balance);
+    var sc = useContext(ShopContext)
     const [deposit, setDeposit] = useState(0);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setBalance(parseInt(balance) + parseInt(deposit))
-        Balances[userID].balance = balance;
-        console.log(balance)
+        sc.setUserBalance(sc.userBalance + deposit);
+        console.log(sc.userBalance);
     }
 
     return (
@@ -37,7 +34,7 @@ export const Balance = () => {
                 }}
             >
                 <Typography padding={5} fontSize={42}>
-                    ${balance}
+                    ${sc.userBalance}
                 </Typography>
 
                 <TextField
