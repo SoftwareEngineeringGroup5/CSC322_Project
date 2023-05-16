@@ -183,7 +183,7 @@ export const EmployeeNavbar = () => {
           <Tooltip title="Build">
             <IconButton disableRipple >
               <Badge color="secondary">
-                <ShoppingCart fontSize="large" />
+                <ConstructionIcon fontSize="large" />
               </Badge>
             </IconButton>
           </Tooltip>

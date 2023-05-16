@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography"
-import { Box } from "@mui/material";
+import { Box, Button, Link } from "@mui/material";
+
 
 export const InsufficientFunds = () => {
     return (
@@ -11,9 +12,25 @@ export const InsufficientFunds = () => {
                 alignItems: "center"
             }}
         >
-            <Typography mt={20} fontSize={64}>
+            <Typography m={20} fontSize={64}>
                 Insufficient funds! 1 warning issued
             </Typography>
+
+
+            <Link to="/cart">
+                <Button
+                    variant="contained" 
+                    size="large" 
+                    style={{ 
+                        backgroundColor: 'black', 
+                        color: 'white' , 
+                        width:'200px',  
+                        borderRadius: '30px',
+                    }}
+                > 
+                    Back to Cart
+                </Button>
+            </Link>
         </Box> 
     )
 }

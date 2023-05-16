@@ -11,6 +11,8 @@ export const userList = [
         id: 1,
         accountType: "Employee",
         username: "testemployee",
+        email: "employee@example.com",
+        password: "password",
         balance: 2000,
         warnings: 0,
         praises: 0,
@@ -18,8 +20,11 @@ export const userList = [
 
     {
         id: 2,
+        applicationStatus: "approved",
         accountType: "Customer",
         username: "testcustomer",
+        email: "customer@example.com",
+        password: "password",
         balance: 2000,
         warnings: 0,
         praises: 0,
