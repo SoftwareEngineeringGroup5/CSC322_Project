@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { PRODUCTS } from '../../../products'
-import { BuildProduct } from '../list/buildProuctList'
+import { BuildProduct } from '../list/buildProductList'
 import { Rating } from '@mui/material'
 import "./ratingStyle.css"
 

@@ -23,10 +23,10 @@ export const Cart = () => {
 
   const checkout = () => {
    if (userBalance < getTotalBundleAmount() + getTotalCartAmount()) {
-      navigate("/insufficientFunds")
-      setUserWarnings(userWarnings + 1);
+      setUserWarnings(userWarnings + 1);  
+      navigate("/insufficientFunds");
     } else {
-      console.log("all good!")
+      navigate("/sucessfulpurchase")
     }
   }
 
@@ -72,7 +72,7 @@ export const Cart = () => {
         </div>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
 
-        <button  onClick={() => checkoutLogic()}>Checkout</button>
+        <button  onClick={() => checkout()}>Checkout</button>
         <button >Add to Suggestions</button>
 
       </div>

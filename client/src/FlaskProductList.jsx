@@ -7,7 +7,7 @@ export const FlaskProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/product/all');
+        const response = await fetch('https:/localhost:5000/product/all');
         if (response.ok) {
           const data = await response.json();
 

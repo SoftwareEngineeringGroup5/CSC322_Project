@@ -114,7 +114,7 @@ export const CustomerNavbar = () => {
           </Tooltip>
         </Link>
 
-        <Link to ="/"> 
+        <Link to ="/wishlist"> 
           <Tooltip title="Wishlist">
             <IconButton disableRipple >
               <Badge color="secondary">
