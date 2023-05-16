@@ -1,22 +1,21 @@
-import React, { useContext } from 'react'
-import { PRODUCTS } from '../../../products'
-import { BuildProduct } from './buildProuctList'
-import { ShopContext } from '../../../context/shop-context'
-import "./buildList.css"
+import React, { useContext } from 'react';
+import { PRODUCTS } from '../../../products';
+import { BuildProduct } from './buildProductList';
+import { ShopContext } from '../../../context/shop-context';
+import "./buildList.css";
+
 export const BuildList = () => {
+  // Access the currentcat, bundleMatch, and findCommonMatches functions from the ShopContext
+  const { currentcat, bundleMatch} = useContext(ShopContext);
 
-
-  const {currentcat, bundleMatch} = useContext(ShopContext);
-  
-  const currentCategoryList = currentcat;
-  const currentCatLength = currentcat.length;
-  const displayProductID = bundleMatch;
-  const checkCurrent = (catogoryName) => {
-    if (currentCategoryList.includes(catogoryName)) {
+  // Check if a given category is in the current category list
+  const checkCurrent = (categoryName) => {
+    if (currentcat.includes(categoryName)) {
       return true;
     }
   };
 
+  // If all categories are in the current category list, display a message that the bundle is full
   if (checkCurrent("Motherboard") && checkCurrent("CPU") && checkCurrent("Case")) {
     return (
       <div>
@@ -24,65 +23,69 @@ export const BuildList = () => {
       </div>
     );
   }
+
   return (
     <div className="BuildListpage">
       <div className="buildListHeader">
         <h1><b>List</b></h1>
       </div>
+      
+      {/* Render the Motherboard category if it is not in the current category list */}
       {!checkCurrent("Motherboard") && (
         <div className='category'>
-            <div className='Motherboard'>
-              <h2><b>Motherboard</b></h2>
-            </div>
-            <div className="buildPC-product">
+          <div className='Motherboard'>
+            <h2><b>Motherboard</b></h2>
+          </div>
+          <div className="buildPC-product">
             {PRODUCTS.map((product) => (
+              // Render the BuildProduct component if the product belongs to the Motherboard category and matches the displayProductID
+              product.category === "Motherboard" && (bundleMatch.length === 0 || bundleMatch.includes(product.id)) ? (
+                <BuildProduct data={product} key={product.category} />
+              ) : (
+                <React.Fragment key={product.category}></React.Fragment>
+              )
+            ))}
+          </div>
+        </div>
+      )}
 
-              product.category === "Motherboard" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
-                      <BuildProduct data = {product} key = {product.category}/> 
+      {/* Render the CPU category if it is not in the current category list */}
+      {!checkCurrent("CPU") && (
+        <div className='category'>
+          <div className='Motherboard'>
+            <h2><b>CPU</b></h2>
+          </div>
+          <div className="buildPC-product">
+            {PRODUCTS.map((product) => (
+              // Render the BuildProduct component if the product belongs to the CPU category and matches the displayProductID
+              product.category === "CPU" && (bundleMatch.length === 0 || bundleMatch.includes(product.id)) ? (
+                <BuildProduct data={product} key={product.category} />
+              ) : (
+                <React.Fragment key={product.category}></React.Fragment>
+              )
+            ))}
+          </div>
+        </div>
+      )}
 
-              ) :(
+      {/* Render the Case category if it is not in the current category list */}
+      {!checkCurrent("Case") && (
+        <div className='category'>
+          <div className='Motherboard'>
+            <h2><b>Case</b></h2>
+          </div>
+          <div className="buildPC-product">
+            {PRODUCTS.map((product) => (
+              // Render the BuildProduct component if the product belongs to the Case category and matches the displayProductID
+              product.category === "Case" && (bundleMatch.length === 0 || bundleMatch.includes(product.id)) ? (
+                <BuildProduct data={product} key={product.category} />
+              ) : (
                 <React.Fragment key={product.category}></React.Fragment>
               )
               ))}
-            </div>
-          </div>
-        )}
-      {!checkCurrent("CPU") && (
-        <div className='category'>
-            <div className='Motherboard'>
-              <h2><b>CPU</b></h2>
-                <div className="buildPC-product">
-                    {PRODUCTS.map((product) => (
-
-                      product.category === "CPU" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
-                              <BuildProduct data = {product} key = {product.category} /> 
-
-                      ) :(
-                        <React.Fragment key={product.category}></React.Fragment>
-                      )
-                      ))}
-                </div>
-            </div>
-        </div>
-   )}
-    {!checkCurrent("Case") && (
-      <div className='category'>
-          <div className='Motherboard'>
-            <h2><b>Case</b></h2>
-            <div className="buildPC-product">
-              {PRODUCTS.map((product) => (
-
-                product.category === "Case" && (displayProductID.length === 0 || displayProductID.includes(product.id)) ? (
-                        <BuildProduct data = {product} key = {product.category}/> 
-
-                ) :(
-                  <React.Fragment key={product.category}></React.Fragment>
-                )
-                ))}
               </div>
-          </div>
-    </div>
-  )}
-  </div>
+            </div>
+          )}
+        </div>
 );
 };

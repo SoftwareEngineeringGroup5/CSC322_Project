@@ -1,27 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { ShopContext } from '../../../context/shop-context';
 
 export const BuildProduct = (props) => {
-    const { id, productName, price, productImage, category, productlink} = props.data;
-    const {addToBundle} = useContext(ShopContext);
-    const {bundleItems} = useContext(ShopContext);
-    const {removeFromBundle} = useContext(ShopContext);
-    const {addBundleCategory, removeBundleCategory} = useContext(ShopContext);
-    const bundleAmount = bundleItems[id];
+  // Destructure the props
+  const { id, productName, price, productImage, category, productlink } = props.data;
 
-  const handleAddToBundleClick = () => {
-      addBundleCategory(category)
-      addToBundle(id)
-    }
-
-  const handleRemoveFromBundleClick = () => {
-      removeBundleCategory(category)
-      removeFromBundle(id)
-    }
+  // Access the addToBundle and removeFromBundle functions from the ShopContext
+  const { addToBundle, removeFromBundle } = useContext(ShopContext);
 
   return (
-    <div className="build-Product-Card" >
+    <div className="build-Product-Card">
+      {/* Link to the product's detail page */}
       <Link to={productlink}>
         <img src={productImage} alt="" />
       </Link>
@@ -30,10 +20,15 @@ export const BuildProduct = (props) => {
           <b>{productName}</b>
         </p>
         <p>${price}</p>
-        <p>Bundle {bundleAmount}</p>
-        <button className='add-to-bundle' onClick={ () => handleAddToBundleClick()}>Add to Bundle</button>
-        <button className='add-to-bundle' onClick={ () => handleRemoveFromBundleClick()}>Remove From Bundle</button>
-        </div>
+        {/* Add to Bundle button */}
+        <button className='add-to-bundle' onClick={() => addToBundle(id)}>
+          Add to Bundle
+        </button>
+        {/* Remove from Bundle button */}
+        <button className='add-to-bundle' onClick={() => removeFromBundle(id)}>
+          Remove From Bundle
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};

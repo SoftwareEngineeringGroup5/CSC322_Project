@@ -1,31 +1,34 @@
-
 export const userList = [
     {
         id: 0,
-        accountType: "owner",
+        accountType: "Owner",
         username: "jiewei123",
         balance: 999999
-
     },
-    
     {
         id: 1,
-        accountType: "employee",
+        accountType: "Employee",
         username: "testemployee",
-        balance: 2000
+        balance: 2000,
+        warnings: 0,
+        praises: 0,
     },
-
     {
         id: 2,
-        accountType: "customer",
+        accountType: "Customer",
         username: "testcustomer",
-        balance: 2000
+        balance: 2000,
+        warnings: 0,
+        praises: 0,
     },
     
+
     {
         id: 3,
-        accountType: "visitor",
+        accountType: "Visitor",
         username: "",
-        balance: 2000
+        balance: 2000,
+        warnings: 0,
+        praises: 0,
     }
 ];

@@ -12,13 +12,16 @@ import { OwnerPage } from './pages/application/ownersPage';
 import { Balance } from './pages/balance/balance';
 import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
+import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
+import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
+import { FailedPurchase } from './pages/cart/failedPurchase';
 
-const user = "Customer";
+const userID = 2;
 
 const NavbarController = () => {
-  switch(user) {
+  switch(userList[userID].accountType) {
     case "Visitor":   return (<VisitorNavbar/>)
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);
@@ -43,9 +46,12 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/balance" element={<Balance/>}/>
+            <Route path="/ratingPage" element={<RatingPage/>}/> 
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
+            <Route path="/sucessfulpurchase" element={<SuccessfulPurchase/>}/>
+            <Route path="/failedpurchase" element={<FailedPurchase/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>
