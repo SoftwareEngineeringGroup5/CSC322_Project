@@ -9,7 +9,7 @@ export const PRODUCTS = [
     productName: "ASUS Z790-E ",
     price: 699.0,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0653703_443614.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product1",
     match:[11,12,21,22]
@@ -19,7 +19,7 @@ export const PRODUCTS = [
     productName: "MSI X570S MAG TOMAHAWK MAX",
     price: 229.0,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0640444_310110.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product2",
     match:[12,13,23,22]
@@ -29,7 +29,7 @@ export const PRODUCTS = [
     productName: "Z790I MPG Edge",
     price: 359.0,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0664308_549741.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product3",
     match:[13,14,23,24]
@@ -39,7 +39,7 @@ export const PRODUCTS = [
     productName: "ASUS Z790 ROG",
     price: 699.0,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0653702_443572.jpg ",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product4",
     match:[14,15,24,25]
@@ -49,7 +49,7 @@ export const PRODUCTS = [
     productName: "ASRock X670E Pro RS",
     price: 249.99,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0652773_438705.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product5",
     match:[15,16,25,26]
@@ -59,7 +59,7 @@ export const PRODUCTS = [
     productName: "Gigabyte B650I Aorus",
     price: 269.99,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0664322_549766.jpg ",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product6",
     match:[16,17,26,27]
@@ -69,7 +69,7 @@ export const PRODUCTS = [
     productName: "ASRock B650M PG Riptide ",
     price: 159.99,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0660141_513226.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product7",
     match:[17,18,27,28,]
@@ -79,7 +79,7 @@ export const PRODUCTS = [
     productName: "Gigabyte B650I Aorus",
     price: 269.99,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0659678_516385.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product8",
     match:[18,19,28,29]
@@ -89,7 +89,7 @@ export const PRODUCTS = [
     productName: "ASUS Z790-E ",
     price: 699.0,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0653703_443614.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product9",
     match:[11,15,21,25]
@@ -99,7 +99,7 @@ export const PRODUCTS = [
     productName: "ASRock X670E Pro RS",
     price: 249.99,
     productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0652773_438705.jpg",
-    category: "motherboard",
+    category: "Motherboard",
     reviews: ["Great product id 2","cool","nice"],
     productlink: "/product/product10",
     match:[12,17,22,27]
@@ -209,7 +209,7 @@ export const PRODUCTS = [
   productName: "H5 Flow Tempered Glass ATX Mid",
   price:94.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0643497_340034.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product21",
   match:[1,2,11,12]
@@ -219,7 +219,7 @@ export const PRODUCTS = [
   productName: "X1 Tempered Glass ATX Mid-",
   price:44.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0643497_340034.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product22",
   match:[2,3,12,13]
@@ -229,7 +229,7 @@ export const PRODUCTS = [
   productName: "O11 Dynamic EVO Tempered Glass ATX Mid",
   price:169.99 ,
   productImage: " https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0645430_360057.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product23",
   match:[3,4,13,14]
@@ -239,7 +239,7 @@ export const PRODUCTS = [
   productName: "Lancool 205 Mesh Type C Tempered Glass ATX Mid",
   price:89.99 ,
   productImage: " https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0650078_409540.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product24",
   match:[4,5,14,15]
@@ -249,7 +249,7 @@ export const PRODUCTS = [
   productName: "O11 Dynamic EVO Tempered Glass ATX Mid",
   price:89.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0645428_360032.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product",
   match:[5,6,15,16]
@@ -259,7 +259,7 @@ export const PRODUCTS = [
   productName: "Lancool 216 RGB Tempered Glass ATX Mid",
   price:109.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0660145_512251.jpg",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product26",
   match:[6,7,16,17]
@@ -269,7 +269,7 @@ export const PRODUCTS = [
   productName: "LANCOOL III RGB Tempered Glass ATX Mid",
   price:169.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0649250_399089.jpg",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product27",
   match:[7,8,17,18]
@@ -279,7 +279,7 @@ export const PRODUCTS = [
   productName: "Lancool II MESH Type C RGB",
   price:109.99 ,
   productImage: "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0642886_329698.jpg",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product/28",
   match:[8,9,18,19]
@@ -289,7 +289,7 @@ export const PRODUCTS = [
   productName: "O11 Dynamic EVO Tempered Glass ATX Mid",
   price:169.99 ,
   productImage: " https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0645430_360057.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product29",
   match:[9,10,19,20]
@@ -299,7 +299,7 @@ export const PRODUCTS = [
   productName: "Lancool 205 Mesh Type C Tempered Glass ATX Mid",
   price:89.99 ,
   productImage: " https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/0650078_409540.jpg ",
-  category: "case",
+  category: "Case",
   reviews: ["Great product id 2","cool","nice"],
   productlink: "/product/product30",
   match:[1,5,11,15]

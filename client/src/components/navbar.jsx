@@ -173,6 +173,7 @@ export const CustomerNavbar = () => {
 export const EmployeeNavbar = () => {
   return (
     <Box 
+
       sx={{
         display: "flex",
         flexDirection: "row",
@@ -190,6 +191,13 @@ export const EmployeeNavbar = () => {
           Warnings: {0} Praises: {0}
         </Typography>
       </Box>
+
+      <div className="feedback">
+        <Link to="/feedback">
+        <h1>Feedback</h1>
+        </Link>
+      </div>
+      
       
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
         <Link to="/applications"> 

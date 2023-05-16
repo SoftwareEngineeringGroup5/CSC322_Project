@@ -25,7 +25,7 @@ export const userList = [
         discount: true,
         applicationStatus: "approved",
         accountType: "Customer",
-        username: "testcustomer",
+        username: "Hasnain",
         email: "customer@example.com",
         password: "password",
         balance: 2000,
