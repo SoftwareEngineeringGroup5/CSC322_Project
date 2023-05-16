@@ -17,11 +17,13 @@ import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './com
 import { ChatPage } from './Chatbox/ChatPage';
 import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
 import { FailedPurchase } from './pages/cart/failedPurchase';
+
 import { ShopContext } from './context/shop-context';
 import { userList } from './pages/userList';
 import { WishList } from './pages/shop/wishList';
 
-const userID = 2;
+
+const userID = 1;
 
 const NavbarController = () => {
   switch(userList[userID].accountType) {

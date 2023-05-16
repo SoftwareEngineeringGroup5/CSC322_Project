@@ -10,12 +10,13 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Home  from "@mui/icons-material/Home";
 import LoginIcon from '@mui/icons-material/Login';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import GradingIcon from '@mui/icons-material/Grading';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import QueueIcon from '@mui/icons-material/Queue';
 import { Link } from "react-router-dom";
 import { Balance } from "../pages/balance/balance";
 import { ShopContext } from "../context/shop-context";
+import GradingIcon from '@mui/icons-material/Grading';
+import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 
 export const VisitorNavbar = () => {
   return (
@@ -52,7 +53,7 @@ export const VisitorNavbar = () => {
               </Badge>
             </IconButton>
           </Tooltip>
-        </Link>
+        </Link>  
       </Box>
     </Box>
   );
@@ -134,6 +135,16 @@ export const CustomerNavbar = () => {
           </Tooltip>
         </Link>
 
+        <Link to="/chat"> 
+     <Tooltip title="chat">
+            <ChatBubbleIcon disableRipple >
+              <Badge color="secondary">
+                <LoginIcon fontSize="large" />
+              </Badge>
+            </ChatBubbleIcon>
+          </Tooltip>
+     </Link>
+
         <Link to="/">
           <Tooltip title="Home">
             <IconButton disableRipple >
@@ -162,15 +173,16 @@ export const CustomerNavbar = () => {
 export const EmployeeNavbar = () => {
   return (
     <Box 
-      sx={{ display:"flex",
-            flexDirection:"row",
-            justifyContent:"space-between",
-            height: 100, 
-            backgroundColor: "#486DF0"
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        height: 100, 
+        backgroundColor: "#486DF0"
       }}
     >
-      <Box sx={{ p: 1}}>
-        <Typography fontSize={36} >
+      <Box sx={{ p: 1 }}>
+        <Typography fontSize={36}>
           Welcome, EmployeeName
         </Typography>
 
@@ -180,11 +192,31 @@ export const EmployeeNavbar = () => {
       </Box>
       
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
-        <Link to ="/build"> 
+        <Link to="/applications"> 
+          <Tooltip title="applications">
+            <GradingIcon disableRipple >
+              <Badge color="secondary" fontSize="large">
+                <LoginIcon />
+              </Badge>
+            </GradingIcon>
+          </Tooltip>
+        </Link>
+
+        <Link to="/chat"> 
+          <Tooltip title="chat">
+            <ChatBubbleIcon disableRipple >
+              <Badge color="secondary" fontSize="large">
+                <LoginIcon />
+              </Badge>
+            </ChatBubbleIcon>
+          </Tooltip>
+        </Link>
+
+        <Link to="/build"> 
           <Tooltip title="Build">
             <IconButton disableRipple >
-              <Badge color="secondary">
-                <ShoppingCart fontSize="large" />
+              <Badge color="secondary" fontSize="large">
+                <ShoppingCart />
               </Badge>
             </IconButton>
           </Tooltip>
@@ -193,8 +225,8 @@ export const EmployeeNavbar = () => {
         <Link to="/">
           <Tooltip title="Home">
             <IconButton disableRipple >
-              <Badge color="secondary">
-                <Home fontSize="large" />
+              <Badge color="secondary" fontSize="large">
+                <Home />
               </Badge>
             </IconButton>
           </Tooltip>
@@ -203,8 +235,8 @@ export const EmployeeNavbar = () => {
         <Link to="/login">
           <Tooltip title="Logout">
             <IconButton disableRipple >
-              <Badge color="secondary">
-                <ExitToAppIcon fontSize="large" />
+              <Badge color="secondary" fontSize="large">
+                <ExitToAppIcon />
               </Badge>
             </IconButton>
           </Tooltip>
@@ -213,6 +245,7 @@ export const EmployeeNavbar = () => {
     </Box>
   );
 };
+
 
 export const OwnerNavbar = () => {
   return (
