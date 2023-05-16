@@ -13,7 +13,6 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import GradingIcon from '@mui/icons-material/Grading';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { Link } from "react-router-dom";
-import { Balances } from "../pages/balance/userBalances";
 import { ShopContext } from "../context/shop-context";
 
 export const VisitorNavbar = () => {
