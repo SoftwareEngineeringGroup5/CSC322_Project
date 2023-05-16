@@ -23,10 +23,10 @@ export const Cart = () => {
 
   const checkout = () => {
    if (userBalance < getTotalBundleAmount() + getTotalCartAmount()) {
-      navigate("/insufficientFunds")
-      setUserWarnings(userWarnings + 1);
+      setUserWarnings(userWarnings + 1);  
+      navigate("/insufficientFunds");
     } else {
-      console.log("all good!")
+      navigate("/sucessfulpurchase")
     }
   }
 
