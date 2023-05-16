@@ -15,6 +15,7 @@ import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
+import { WishList } from './pages/shop/wishList';
 
 
 const user = "Customer";
@@ -49,6 +50,7 @@ function App() {
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
+            <Route path="/wishlist" element={<WishList/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>

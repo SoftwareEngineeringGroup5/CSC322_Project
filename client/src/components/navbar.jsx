@@ -13,7 +13,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import GradingIcon from '@mui/icons-material/Grading';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { Link } from "react-router-dom";
-import { Balances } from "../pages/balance/userBalances";
+import { Balance } from "../pages/balance/balance";
 import { ShopContext } from "../context/shop-context";
 
 export const VisitorNavbar = () => {
@@ -106,7 +106,7 @@ export const CustomerNavbar = () => {
       </Box>
 
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
-      <Link to ="/build"> 
+      <Link to ="/wishlist"> 
           <Tooltip title="Build">
             <IconButton disableRipple >
               <Badge color="secondary">
