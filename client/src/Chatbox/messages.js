@@ -1,17 +1,17 @@
 export const MESSAGES = [
     {
         id: 1,
-        username: elizabeth,
-        message:'Hey',
-
+        username: 'elizabeth',
+        text:[{"elizabeth" : 'Hey' }, {"Chat" : 'Hey' }, {"elizabeth" : 'I need help' }, {"elizabeth" : 'How can I update my account' }, {"elizabeth" : '?' }, {"Chat" : 'okay' }],
+    },
+    {
         id: 2,
-        username: Dalisto,
-        message:'I need help',
-        
+        username: 'hasnain',
+        text:[{"hasnain" : 'hi' }, {"Chat" : 'how it going' }, {"hasnain" : 'I need help' }, {"hasnain" : 'How can I update my account' }, {"hasnain" : '?' }, {"Chat" : 'okay' }],
+    },
+    { 
         id: 3,
-        username: Chatbox,
-        message:'hey',
-        message:'How can I help you',
-
-    }
+        username: 'dalitso',
+        text:[{"dalitso" : 'my name' }, {"Chat" : 'Hey' }, {"dalitso" : 'Is' }, {"dalitso" : 'hasnain' }, {"dalitso" : '?' }, {"Chat" : 'okay' }],
+    },
 ]
