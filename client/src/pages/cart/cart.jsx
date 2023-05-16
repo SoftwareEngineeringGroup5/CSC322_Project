@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Cart = () => {
+
   const { cartItems, getTotalCartAmount } = useContext(ShopContext)
   const { bundleItems, getTotalBundleAmount } = useContext(ShopContext)
   const { userWarnings, setUserWarnings } = useContext(ShopContext)
@@ -70,8 +71,10 @@ export const Cart = () => {
             </p>
         </div>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
-        <button onClick={checkout}>Checkout</button>
-        <button>Add to Suggestions</button>
+
+        <button  onClick={() => checkoutLogic()}>Checkout</button>
+        <button >Add to Suggestions</button>
+
       </div>
       ) : (
         <h1> Your Cart is Empty</h1>

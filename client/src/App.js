@@ -15,6 +15,8 @@ import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
+import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
+import { FailedPurchase } from './pages/cart/failedPurchase';
 
 const userID = 2;
 
@@ -48,6 +50,8 @@ function App() {
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
+            <Route path="/sucessfulpurchase" element={<SuccessfulPurchase/>}/>
+            <Route path="/failedpurchase" element={<FailedPurchase/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>

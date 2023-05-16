@@ -130,10 +130,16 @@ function findCommonMatches() {
 
 
   const addToBundle = (itemId) => {
+    console.log(allIDinBundle)
+    if (allIDinBundle.includes(itemId)){
+      return
+    }else{
     setBundleItems((prev) => ({ ...prev, [itemId]: 1}));
     addBundleCategory(itemId);
     setBundleMatch(findCommonMatches());
     setAllIDinBundle(getAllKeysInBundle());
+    };
+    checkconsolelogs()
   };
   
 
@@ -143,6 +149,11 @@ function findCommonMatches() {
     setBundleMatch(findCommonMatches());
     setAllIDinBundle(getAllKeysInBundle());
   };
+  const checkconsolelogs = () =>{
+    console.log(bundleMatch)
+    console.log(allIDinBundle)
+    console.log(currentcat)
+  }
 
   const checkconsolelogs = () =>{
     console.log(findCommonMatches())
