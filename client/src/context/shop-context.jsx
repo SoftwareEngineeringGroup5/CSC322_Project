@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { PRODUCTS } from "../products";
 import { SUGGESTEDCOFIGS } from "../pages/build/SuggestedConfigData";
 import { CornersIn } from "phosphor-react";
+import { userList } from "../pages/userList";
 
 export const ShopContext = createContext(null);
 
@@ -21,6 +22,7 @@ const getDefaultBundle = () => {
   return bundle;
 };
 
+const userID = 2;
 
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
@@ -29,6 +31,9 @@ export const ShopContextProvider = (props) => {
   const [suggestionRating, setSuggestionRating] = useState(0);
   const [bundleMatch, setBundleMatch] = useState([]);
   const [allIDinBundle , setAllIDinBundle] = useState([0]);
+  const [userName, setUserName] = useState(userList[userID].username);
+  const [userType, setUserType] = useState(userList[userID].accountType);
+  const [userBalance, setUserBalance] = useState(userList[userID].balance);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -208,6 +213,12 @@ function findCommonMatch() {
     suggestionRating,
     bundleMatch,
     checkconsolelogs,
+    userName,
+    setUserName,
+    userType,
+    setUserType,
+    userBalance,
+    setUserBalance
   };
 
   return (
