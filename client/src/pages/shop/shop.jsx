@@ -3,7 +3,7 @@ import { PRODUCTS } from "../../products";
 import { Product } from "./product";
 import "./shop.css";
 import "../../App.css";
-import Avatar from '../../Chatbox/avatar';
+// import Avatar from '../../Chatbox/avatar';
 
 export const Shop = () => {
     // const flaskproduct = [
@@ -44,7 +44,7 @@ export const Shop = () => {
                 
             </div>
             <div>
-                <Avatar></Avatar>
+                {/* <Avatar></Avatar> */}
             </div>
         </div>
     </div>
