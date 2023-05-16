@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import Link from "@mui/material/Link"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
@@ -6,16 +6,45 @@ import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
+import { ShopContext } from '../../context/shop-context';
 
 export const SignUp = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {userArray, setUserArray, userID, setUserID} = useContext(ShopContext)
+    const {setUserName} = useContext(ShopContext);
+    const {setUserBalance} = useContext(ShopContext);
+    const {setUserWarnings} = useContext(ShopContext);
+    const {setUserPraises} = useContext(ShopContext);
+    const {userEmail, setUserEmail} = useContext(ShopContext);
+    const {userPassword, setUserPassword} = useContext(ShopContext);
+    const {userType, setUserType} = useContext(ShopContext);
+
+    const [inputEmail, setInputEmail] = useState('');
+    const [inputUsername, setInputUsername] = useState('');
+    const [inputPassword, setInputPassword] = useState('');
+    const [inputConfirm, setInputConfirm] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setEmail(e.target.value);
-        setPassword(e.target.value);
-        console.log(email, password);
+        if (inputPassword != inputConfirm) {
+            console.log("mismatched passwords!")
+        }
+        const newID = userArray.length
+
+        const newUser = {
+            id: newID,
+            applicationStatus: "pending",
+            accountType: "Customer",
+            username: inputUsername,
+            email: inputEmail,
+            password: inputPassword,
+            balance: 0,
+            warnings: 0,
+            praises: 0,
+        }
+
+        const updatedUserList = [...userArray, newUser]
+        setUserArray(updatedUserList);
+        console.log(updatedUserList)
     }
 
     return(
@@ -51,6 +80,8 @@ export const SignUp = () => {
                             id="username-field"
                             placeholder="user123"
                             autoFocus
+                            value={inputUsername}
+                            onChange={e => setInputUsername(e.target.value)}
                         />
 
                         <TextField
@@ -60,6 +91,8 @@ export const SignUp = () => {
                             label="Email"
                             id="email-field"
                             placeholder="example@domain.com"
+                            value={inputEmail}
+                            onChange={e => setInputEmail(e.target.value)}
                         />
 
                         <TextField
@@ -70,6 +103,8 @@ export const SignUp = () => {
                             type="password"
                             id="password-field"
                             placeholder="********" 
+                            value={inputPassword}
+                            onChange={e => setInputPassword(e.target.value)}
                             
                         />
 
@@ -80,14 +115,15 @@ export const SignUp = () => {
                             label="Confirm Password"
                             type="password"
                             id="confirm-password-field"
-                            placeholder="********" 
+                            placeholder="********"
+                            value={inputConfirm}
+                            onChange={e => setInputConfirm(e.target.value)}
                         />
 
                         <Box mt={1}>
                             <Button
                                 type="submit"
-                                variant="contained" 
-                                href="/SignUp" 
+                                variant="contained"
                                 size="medium" 
                                 style={{ 
                                     backgroundColor: 'black', 
