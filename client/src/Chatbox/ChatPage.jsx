@@ -1,38 +1,8 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
 import BadWordsFilter from 'bad-words';
-import Popover from '@mui/material/Popover';
-import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import './chat.css'
-
-export default function PopoverPopupState() {
-  return (
-    <PopupState variant="popover" popupId="demo-popup-popover">
-      {(popupState) => (
-        <div>
-          <Button variant="contained" {...bindTrigger(popupState)}>
-            Open Popover
-          </Button>
-          <Popover
-            {...bindPopover(popupState)}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'center',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'center',
-            }}
-          >
-            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-          </Popover>
-        </div>
-      )}
-    </PopupState>
-  );
-}
-
 
 
 const MESSAGES = [
@@ -106,7 +76,7 @@ export const ChatPage = () => {
          
     <div className="chat-box">
         <div className='button' >
-            
+        <Link to='/feedback'>
         < Button
               style={{
                 backgroundColor: 'black',
@@ -120,6 +90,7 @@ export const ChatPage = () => {
             >
               CLOSE
             </Button>
+            </Link>
           
         </div>
         
@@ -156,7 +127,8 @@ export const ChatPage = () => {
             },
           }}
         />
-       < Button
+        
+          <Button
               style={{
                 backgroundColor: 'black',
                 color: 'white',
@@ -169,6 +141,7 @@ export const ChatPage = () => {
             >
               SEND
             </Button>
+           
       </form>
     </div>
     </div>
