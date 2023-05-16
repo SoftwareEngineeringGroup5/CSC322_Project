@@ -17,17 +17,9 @@ export const SuccessfulPurchase = () => {
         <div className="Main-text">
             <h1>Thank you for your purchase.</h1>
         </div>
-        <div className="buildPC-product">
-            {PRODUCTS.map((product) => (
-               (displayid.includes(product.id)) ? (
-                      <BuildProduct data = {product} key = {product.category}/> 
-              ) :(
-                <React.Fragment key={product.category}></React.Fragment>
-              )
-                
-              ))}
-                  
-        </div>
+        <button className="checkout">
+            Add your Config for others
+        </button>
     </div>
   )
 }

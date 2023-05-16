@@ -17,7 +17,11 @@ import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './com
 import { ChatPage } from './Chatbox/ChatPage';
 import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
 import { FailedPurchase } from './pages/cart/failedPurchase';
+
+import { ShopContext } from './context/shop-context';
 import { userList } from './pages/userList';
+import { WishList } from './pages/shop/wishList';
+
 
 const userID = 1;
 
@@ -31,6 +35,8 @@ const NavbarController = () => {
 }
 
 function App() {
+
+
   return (
     <div className="App">
       
@@ -53,6 +59,7 @@ function App() {
             <Route path="/chat" element={<ChatPage/>}/>
             <Route path="/sucessfulpurchase" element={<SuccessfulPurchase/>}/>
             <Route path="/failedpurchase" element={<FailedPurchase/>}/>
+            <Route path='/wishlist' element={<WishList/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>
