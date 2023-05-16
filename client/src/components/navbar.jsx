@@ -12,6 +12,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import GradingIcon from '@mui/icons-material/Grading';
 import ConstructionIcon from '@mui/icons-material/Construction';
+import QueueIcon from '@mui/icons-material/Queue';
 import { Link } from "react-router-dom";
 import { ShopContext } from "../context/shop-context";
 
@@ -59,10 +60,7 @@ export const VisitorNavbar = () => {
 
 
 export const CustomerNavbar = () => {
-
-
-  const {userName} = useContext(ShopContext)
-  const sc = useContext(ShopContext)
+  const { userName, userBalance, userWarnings, userPraises } = useContext(ShopContext)
   return (
     <Box 
       sx={{ display:"flex",
@@ -74,11 +72,11 @@ export const CustomerNavbar = () => {
     >
       <Box sx={{ p: 1 }}>
         <Typography fontSize={36} >
-          Welcome, {sc.userName}
+          Welcome, {userName}
         </Typography>
         
         <Typography fontSize={20}>
-          Warnings: {0} Praises: {0}
+          Warnings: {userWarnings} Praises: {userPraises}
         </Typography>
       </Box>
 
@@ -89,7 +87,7 @@ export const CustomerNavbar = () => {
         }}
       >
         <Typography mt={1} fontSize={20} >
-          ${sc.userBalance}
+          ${userBalance}
         </Typography>
 
         <Link to="/balance">
@@ -105,11 +103,21 @@ export const CustomerNavbar = () => {
       </Box>
 
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
-      <Link to ="/build"> 
+        <Link to ="/build"> 
           <Tooltip title="Build">
             <IconButton disableRipple >
               <Badge color="secondary">
                 <ConstructionIcon fontSize="large" />
+              </Badge>
+            </IconButton>
+          </Tooltip>
+        </Link>
+
+        <Link to ="/"> 
+          <Tooltip title="Wishlist">
+            <IconButton disableRipple >
+              <Badge color="secondary">
+                <QueueIcon fontSize="large" />
               </Badge>
             </IconButton>
           </Tooltip>
