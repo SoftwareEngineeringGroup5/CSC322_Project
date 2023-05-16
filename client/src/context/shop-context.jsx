@@ -30,18 +30,17 @@ const getDefaultWishlist = () => {
   return wishlist;
 }
 
-const userID = 2;
-
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [bundleItems, setBundleItems] = useState(getDefaultBundle()); // {1:0,2:0}
   const [wishlist, setWishlist] =useState(getDefaultWishlist())
   const [currentcat, setcurrentcat] = useState([]); //["Motherboard",CPU]
-  const [suggestionRating, setSuggestionRating] = useState(0);
+  const [suggestionRating, setSuggestionRating] = useState(2);
   const [bundleMatch, setBundleMatch] = useState([]); //[1,2,3,4]
   const [allIDinBundle , setAllIDinBundle] = useState([]);
-  const [userArray] = useState(userList);
+  const [userArray, setUserArray] = useState(userList);
   const [userID, setUserID] = useState(0);
+  const [user, setUser] = useState(userList[0])
   const [userEmail, setUserEmail] = useState(userList[userID].email);
   const [userPassword, setUserPassword] = useState(userList[userID].password);
   const [userName, setUserName] = useState(userList[userID].username);
@@ -217,7 +216,6 @@ function findCommonMatches() {
     addToWishlist,
     removeFromWishlist,
     wishlist,
-
     userWarnings,
     setUserWarnings,
     userPraises,
@@ -226,9 +224,12 @@ function findCommonMatches() {
     setUserEmail,
     userPassword,
     setUserPassword,
-    userList,
+    userArray,
+    setUserArray,
     userID,
     setUserID,
+    user,
+    setUser
   };
 
   return (
