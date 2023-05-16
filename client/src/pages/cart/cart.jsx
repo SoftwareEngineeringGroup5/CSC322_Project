@@ -72,7 +72,7 @@ export const Cart = () => {
         </div>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
 
-        <button  onClick={() => checkoutLogic()}>Checkout</button>
+        <button  onClick={() => checkout()}>Checkout</button>
         <button >Add to Suggestions</button>
 
       </div>
