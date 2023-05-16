@@ -13,6 +13,7 @@ import { Balance } from './pages/balance/balance';
 import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
 import { CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
+import { RatingPage } from './pages/build/Rating/ratingPage';
 
 const user = "Customer";
 
@@ -42,6 +43,7 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/balance" element={<Balance/>}/>
+            <Route path="/ratingPage" element={<RatingPage/>}/> 
           </Routes>
         </Router>
       </ShopContextProvider>

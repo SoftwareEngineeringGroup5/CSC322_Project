@@ -11,10 +11,16 @@ import Home  from "@mui/icons-material/Home";
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import { Link } from "react-router-dom";
 import { Balances } from "../pages/balance/userBalances";
+import { ShopContext } from "../context/shop-context";
 
 const userID = 0;
 
+
+
 export const CustomerNavbar = () => {
+
+  const {userName} = useContext(ShopContext)
+
   return (
     <Box 
       sx={{ display:"flex",
@@ -26,7 +32,7 @@ export const CustomerNavbar = () => {
     >
       <Box sx={{ p: 1 }}>
         <Typography fontSize={36} >
-          Welcome, {Balances[userID].username}
+          Welcome, {userName}
         </Typography>
         
         <Typography fontSize={20}>

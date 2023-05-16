@@ -12,7 +12,7 @@ export const Balance = () => {
         e.preventDefault();
         setBalance(parseInt(balance) + parseInt(deposit))
         Balances[userID].balance = balance;
-        console.log(balance)
+        console.log(Balances[0])
     }
 
     return (

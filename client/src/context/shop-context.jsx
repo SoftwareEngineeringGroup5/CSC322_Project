@@ -25,10 +25,11 @@ const getDefaultBundle = () => {
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
   const [bundleItems, setBundleItems] = useState(getDefaultBundle());
-  const [currentcat, setcurrentcat] = useState([""]);
+  const [currentcat, setcurrentcat] = useState([]);
   const [suggestionRating, setSuggestionRating] = useState(0);
   const [bundleMatch, setBundleMatch] = useState([]);
-  const [allIDinBundle , setAllIDinBundle] = useState([0]);
+  const [allIDinBundle , setAllIDinBundle] = useState([]);
+
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -52,96 +53,54 @@ export const ShopContextProvider = (props) => {
     return totalBundleAmount;
   };
 
-  const setBundleThroughSuggestions = (SuggestList,rating,bundledproducts) =>{
-    //clear the current bundle
-    //setBundleItems({});
-    //replace the with the current distionary according to id of the review.
-    setBundleItems(SuggestList);
-    setSuggestionRating(rating);
-    const catergorylist = [];
-
-  for (let i = 0; i < PRODUCTS.length ; i++) {
-      const product = PRODUCTS[i];
-      if (bundledproducts.includes(product.id)) {
-        catergorylist.push(product.category);
-        //addBundleCategory(product.category);
-      }
-    }
-    setcurrentcat([])
-    setcurrentcat(catergorylist)
-
-      // for (const id in bundledproducts){
-      //   const findid = bundledproducts[id];
-      //   const Sproduct = PRODUCTS.find(p => p.id === findid);
-      //   const category = Sproduct.category;
-      //   addBundleCategory(category);
-      //   console.log(category);
-      // }
-
+  const setBundleThroughSuggestions = (PreSelectedBundle) =>{
+    PreSelectedBundle.forEach((id) => {
+      addToBundle(id);
+    });
   }
 
 
-  const getAllKeysInBundle = () => {
-    let allKeys = Object.entries(bundleItems)
-  .filter(([key, value]) => value === 1)
-  .map(([key, value]) => key);
-  
-  let IdInBundle = allKeys.map((item) => Number(item));
-  setAllIDinBundle(IdInBundle)
-  return IdInBundle;
-
+const getAllKeysInBundle = () => {
+  const keysWithOneValue = Object.keys(bundleItems)
+                            .filter(key => bundleItems[key] === 1)
+                            .map(key => parseInt(key));
+      return keysWithOneValue;
 };
 
 
-  //Matching all the products to configeration to other products.
-  // const addAllMatch = () => { 
-  //   let IDArray = getAllKeysInBundle();
-  //   for (let i = 0; i < IDArray.length; i++) {
-  //     const product = PRODUCTS[i];
-      
-  //   }
+function findCommonMatches() {
+  const MatchID = getAllKeysInBundle();
+  if (MatchID.length === 1) {
+    const match = PRODUCTS.find((p) => p.id === MatchID[0]);
+    const commonElements = match.match;
+    return commonElements;
+  }
 
-// const findCommonMatches = () => {
-//   const commonMatches = [];
-//   const ID = getAllKeysInBundle()
-//   // Iterate over each product in the PRODUCTS array
-//   PRODUCTS.forEach(product => {
-//     // Check if the product's ID is in the ID array
-//     if (ID.includes(product.id)) {
-//       // If the product's ID is in the ID array, add its match array to the commonMatches array
-//       commonMatches.push(product.match);
-//     }
-//   });
+  const commonMatches = [];
 
-//   // Use the reduce method to find the common elements in the match arrays
-//   return commonMatches.reduce((accumulator, current) => {
-//     // Use the every method to check if each element in the current array is also in the accumulator array
-//     return accumulator.filter(x => current.includes(x));
-//   });
-  
-//   setBundleMatch(commonMatches);
+  MatchID.forEach((id) => {
+    const product = PRODUCTS.find((p) => p.id === id);
+    if (product) {
+      commonMatches.push(...product.match);
+    }
+  });
 
-// };
+  const commonElements = commonMatches.filter((match, index) => {
+    return commonMatches.indexOf(match) === index && commonMatches.lastIndexOf(match) !== index;
+  });
 
-
-function findCommonMatch() {
-  const ID = getAllKeysInBundle();
-  let commonMatch = PRODUCTS.filter((product) => ID.includes(product.id))
-    .map((product) => product.match)
-    .reduce((prev, curr) => {
-      return prev.filter((val) => curr.includes(val));
-    });
-
-  return commonMatch;
+  return commonElements;
 }
 
-  
-
-  const addBundleCategory = (category) => {
+  const addBundleCategory = (id) => {
+    const product = PRODUCTS.find((p) => p.id === id);
+    const category = product.category;
     setcurrentcat([...currentcat,category])
   };
 
-  const removeBundleCategory = (category) => {
+  const removeBundleCategory = (id) => {
+    const product = PRODUCTS.find((p) => p.id === id);
+    const category = product.category;
     const filteredArray = currentcat.filter((value) => value !== category);
     setcurrentcat(filteredArray);
   };
@@ -150,25 +109,29 @@ function findCommonMatch() {
     setcurrentcat([])
     setBundleItems(getDefaultBundle())
     setBundleMatch([]);
-  };
-
-  const addToBundle = (itemId) => {
-    setBundleItems((prev) => ({ ...prev, [itemId]: 1}))    
+    setAllIDinBundle([]);
   };
 
   const checkconsolelogs = () =>{
-    console.log(bundleItems)
-    console.log(allIDinBundle)
+    console.log(findCommonMatches())
+    console.log(getAllKeysInBundle())
     console.log(bundleMatch)
-    setBundleMatch(findCommonMatch());
+    console.log(allIDinBundle)
+    console.log(currentcat)
   }
 
+  const addToBundle = (itemId) => {
+    setBundleItems((prev) => ({ ...prev, [itemId]: 1}));
+    addBundleCategory(itemId);
+  };
+
   
+
   const removeFromBundle = (itemId) => {
-    setBundleItems((prev) => ({ ...prev, [itemId]: 0}))
-    if (bundleMatch.length === 0) {
-      setBundleMatch([]);
-    }
+    setBundleItems((prev) => ({ ...prev, [itemId]: 0}));
+    removeBundleCategory(itemId);
+    setBundleMatch(findCommonMatches());
+    setAllIDinBundle(getAllKeysInBundle());
   };
 
   const addToCart = (itemId) => {
@@ -208,6 +171,7 @@ function findCommonMatch() {
     suggestionRating,
     bundleMatch,
     checkconsolelogs,
+    findCommonMatches,
   };
 
   return (

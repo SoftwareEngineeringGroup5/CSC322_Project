@@ -1,0 +1,25 @@
+.rating-components {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.Suggested-Configuration-card{
+  align-items: center;
+  width: 962px;
+  height: 570px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  margin: 30px;
+}
+
+.header{
+  margin-left: 10px;
+}
+.buildPC-product{
+    align-items: center;
+    margin: 20px;
+}
