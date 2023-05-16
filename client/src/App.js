@@ -10,7 +10,7 @@ import { Viewproduct } from "./pages/viewProductPages/viewproduct";
 import { ApplicatonPage }from "./pages/application/applicationPage" ;
 import { OwnerPage } from './pages/application/ownersPage';
 import { Balance } from './pages/balance/balance';
-import { FlaskProductList } from "./FlaskProductList";
+//import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
@@ -23,7 +23,7 @@ import { userList } from './pages/userList';
 import { WishList } from './pages/shop/wishList';
 
 
-const userID = 1;
+const userID = 2;
 
 const NavbarController = () => {
   switch(userList[userID].accountType) {
@@ -48,7 +48,6 @@ function App() {
             <Route path="/" element={<Shop/>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path='/product/:productlinkID' element={<Viewproduct/>}/> 
-            <Route path='/flaskproduct' element={<FlaskProductList/>}/> 
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
