@@ -149,11 +149,11 @@ function findCommonMatches() {
     setBundleMatch(findCommonMatches());
     setAllIDinBundle(getAllKeysInBundle());
   };
-  const checkconsolelogs = () =>{
-    console.log(bundleMatch)
-    console.log(allIDinBundle)
-    console.log(currentcat)
-  }
+  // const checkconsolelogs = () =>{
+  //   console.log(bundleMatch)
+  //   console.log(allIDinBundle)
+  //   console.log(currentcat)
+  // }
 
   const checkconsolelogs = () =>{
     console.log(findCommonMatches())
