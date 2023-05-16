@@ -34,6 +34,8 @@ export const ShopContextProvider = (props) => {
   const [userName, setUserName] = useState(userList[userID].username);
   const [userType, setUserType] = useState(userList[userID].accountType);
   const [userBalance, setUserBalance] = useState(userList[userID].balance);
+  const [userWarnings, setUserWarnings] = useState(userList[userID].warnings);
+  const [userPraises, setUserPraises] = useState(userList[userID].praises);
 
   const getTotalCartAmount = () => {
     let totalAmount = 0;
@@ -181,7 +183,11 @@ function findCommonMatches() {
     userType,
     setUserType,
     userBalance,
-    setUserBalance
+    setUserBalance,
+    userWarnings,
+    setUserWarnings,
+    userPraises,
+    setUserPraises
   };
 
   return (

@@ -5,7 +5,6 @@ export const userList = [
         accountType: "Owner",
         username: "jiewei123",
         balance: 999999
-
     },
     
     {

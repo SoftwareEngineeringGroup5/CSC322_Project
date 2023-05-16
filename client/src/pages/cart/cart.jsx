@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 export const Cart = () => {
   const { cartItems, getTotalCartAmount } = useContext(ShopContext)
   const { bundleItems, getTotalBundleAmount } = useContext(ShopContext)
+  const { userWarnings, setUserWarnings } = useContext(ShopContext)
+  const { userPraises, setUserPraises } = useContext(ShopContext)
   const { userBalance } = useContext(ShopContext)
   const totalAmount = getTotalCartAmount()
   const totalBundleAmount = getTotalBundleAmount()
@@ -21,6 +23,7 @@ export const Cart = () => {
   const checkout = () => {
    if (userBalance < getTotalBundleAmount() + getTotalCartAmount()) {
       navigate("/insufficientFunds")
+      setUserWarnings(userWarnings + 1);
     } else {
       console.log("all good!")
     }
