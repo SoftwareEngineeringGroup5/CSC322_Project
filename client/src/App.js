@@ -18,11 +18,10 @@ import { ChatPage } from './Chatbox/ChatPage';
 import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
 import { FailedPurchase } from './pages/cart/failedPurchase';
 
-
-const user = "Customer";
+const userID = 2;
 
 const NavbarController = () => {
-  switch(user) {
+  switch(userList[userID].accountType) {
     case "Visitor":   return (<VisitorNavbar/>)
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);

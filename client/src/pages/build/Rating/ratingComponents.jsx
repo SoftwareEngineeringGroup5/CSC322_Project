@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { PRODUCTS } from '../../../products'
-import { BuildProduct } from '../list/buildProductList'
+import { BuildProduct } from '../list/buildProuctList'
+import { Rating } from '@mui/material'
 import "./ratingStyle.css"
 
 export const RatingComponents = (props) => {
+  const {id, configName, bundledproductsuggest} = props.data
+  const [rating, setRating] = useState(props.rating)
+  const displayProductID = bundledproductsuggest;
 
-    const {id, configName, rating, bundledproductsuggest} = props.data
-    const displayProductID = bundledproductsuggest;
   return (
     <div className='Suggested-Configuration-card'>
         <div className="card">
         <div className="header">
                 <span>{configName}</span>
+                <Rating
+                  name="simple-controlled"
+                  value={rating}
+                  onChange={(event, newRating) => {
+                    
+                    setRating(newRating);
+                    console.log(newRating)
+                  }}
+                />
 
-                <span>{rating}</span>
         </div>
         
         <div className="product-list">

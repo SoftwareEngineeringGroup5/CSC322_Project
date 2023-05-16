@@ -6,6 +6,7 @@ export const Product = (props) => {
   const { id, productName, price, productImage, productlink} = props.data;
   const {addToCart} = useContext(ShopContext);
   const {cartItems} = useContext(ShopContext);
+  const {addToWishlist, removeFromWishlist} = useContext(ShopContext);
   const cartItemAmount = cartItems[id];
   
   return (
@@ -18,6 +19,8 @@ export const Product = (props) => {
           <b>{productName}</b>
         </p>
         <p>${price}</p>
+        <button className='addtowishlist' onClick={() => addToWishlist(id)}>Add to Wishlist</button>
+        <button className='addtowishlist' onClick={() => removeFromWishlist(id)}>Remove Wishlist</button>
         <button className='addToCartBttn' onClick={()=> addToCart(id)}>
           Add To Cart {cartItemAmount > 0 && <> ({cartItemAmount})</>}
         </button>
