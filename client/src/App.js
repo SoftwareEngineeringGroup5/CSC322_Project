@@ -15,12 +15,13 @@ import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
+import { InsufficientFunds } from './pages/cart/insufficientFunds';
+import { userList } from './pages/userList';
 
-
-const user = "Customer";
+const userID = 2;
 
 const NavbarController = () => {
-  switch(user) {
+  switch(userList[userID].accountType) {
     case "Visitor":   return (<VisitorNavbar/>)
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);
@@ -49,6 +50,7 @@ function App() {
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
+            <Route path="/insufficientFunds" element={<InsufficientFunds/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>
