@@ -9,13 +9,26 @@ import { useNavigate } from "react-router-dom";
 
 
 export const Cart = () => {
-    const { cartItems, getTotalCartAmount } = useContext(ShopContext)
-    const { bundleItems, getTotalBundleAmount } = useContext(ShopContext)
-    const totalAmount = getTotalCartAmount()
-    const totalBundleAmount = getTotalBundleAmount()
-    const totalAllProducts = totalAmount + totalBundleAmount;
+  const { cartItems, getTotalCartAmount } = useContext(ShopContext)
+  const { bundleItems, getTotalBundleAmount } = useContext(ShopContext)
+  const { userWarnings, setUserWarnings } = useContext(ShopContext)
+  const { userPraises, setUserPraises } = useContext(ShopContext)
+  const { userBalance } = useContext(ShopContext)
+  const totalAmount = getTotalCartAmount()
+  const totalBundleAmount = getTotalBundleAmount()
+  const totalAllProducts = totalAmount + totalBundleAmount;
 
   const navigate = useNavigate()
+
+  const checkout = () => {
+   if (userBalance < getTotalBundleAmount() + getTotalCartAmount()) {
+      navigate("/insufficientFunds")
+      setUserWarnings(userWarnings + 1);
+    } else {
+      console.log("all good!")
+    }
+  }
+
   return (
     <div className='cart'>
       <div>
@@ -57,7 +70,7 @@ export const Cart = () => {
             </p>
         </div>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
-        <button>Checkout</button>
+        <button onClick={checkout}>Checkout</button>
         <button>Add to Suggestions</button>
       </div>
       ) : (
