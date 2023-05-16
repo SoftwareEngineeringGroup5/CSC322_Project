@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { PRODUCTS } from '../../../products';
-import { BuildProduct } from './buildProuctList';
+import { BuildProduct } from './buildProductList';
 import { ShopContext } from '../../../context/shop-context';
 import "./buildList.css";
 
 export const BuildList = () => {
   // Access the currentcat, bundleMatch, and findCommonMatches functions from the ShopContext
-  const { currentcat, bundleMatch, findCommonMatches } = useContext(ShopContext);
+  const { currentcat, bundleMatch} = useContext(ShopContext);
 
   // Check if a given category is in the current category list
   const checkCurrent = (categoryName) => {

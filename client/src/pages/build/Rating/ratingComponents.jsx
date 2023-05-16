@@ -1,6 +1,6 @@
 import React from 'react'
 import { PRODUCTS } from '../../../products'
-import { BuildProduct } from '../list/buildProuctList'
+import { BuildProduct } from '../list/buildProductList'
 import "./ratingStyle.css"
 
 export const RatingComponents = (props) => {
@@ -14,7 +14,6 @@ export const RatingComponents = (props) => {
                 <span>{configName}</span>
 
                 <span>{rating}</span>
-
         </div>
         
         <div className="product-list">

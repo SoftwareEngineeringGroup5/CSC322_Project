@@ -116,17 +116,19 @@ function findCommonMatches() {
     setAllIDinBundle([]);
   };
 
-  const checkconsolelogs = () =>{
-    console.log(findCommonMatches())
-    console.log(getAllKeysInBundle())
-    console.log(bundleMatch)
-    console.log(allIDinBundle)
-    console.log(currentcat)
-  }
+
 
   const addToBundle = (itemId) => {
+    console.log(allIDinBundle)
+    if (allIDinBundle.includes(itemId)){
+      return
+    }else{
     setBundleItems((prev) => ({ ...prev, [itemId]: 1}));
     addBundleCategory(itemId);
+    setBundleMatch(findCommonMatches());
+    setAllIDinBundle(getAllKeysInBundle());
+    };
+    checkconsolelogs()
   };
 
   
@@ -137,6 +139,11 @@ function findCommonMatches() {
     setBundleMatch(findCommonMatches());
     setAllIDinBundle(getAllKeysInBundle());
   };
+  const checkconsolelogs = () =>{
+    console.log(bundleMatch)
+    console.log(allIDinBundle)
+    console.log(currentcat)
+  }
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

@@ -14,8 +14,20 @@ export const Cart = () => {
     const totalAmount = getTotalCartAmount()
     const totalBundleAmount = getTotalBundleAmount()
     const totalAllProducts = totalAmount + totalBundleAmount;
+    let balance = 9000;
+    const navigate = useNavigate()
 
-  const navigate = useNavigate()
+    const checkoutLogic = () =>{
+      if (totalAllProducts <= balance){
+            balance -= totalAllProducts;
+        navigate("/sucessfulpurchase")
+      } else {
+        navigate("/failedpurchase")
+      }
+    }
+
+
+
   return (
     <div className='cart'>
       <div>
@@ -57,8 +69,8 @@ export const Cart = () => {
             </p>
         </div>
         <button onClick={() => navigate("/")}>Continue Shopping</button>
-        <button>Checkout</button>
-        <button>Add to Suggestions</button>
+        <button  onClick={() => checkoutLogic()}>Checkout</button>
+        <button >Add to Suggestions</button>
       </div>
       ) : (
         <h1> Your Cart is Empty</h1>
