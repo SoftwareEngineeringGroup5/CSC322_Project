@@ -40,6 +40,10 @@ export const ShopContextProvider = (props) => {
   const [suggestionRating, setSuggestionRating] = useState(0);
   const [bundleMatch, setBundleMatch] = useState([]); //[1,2,3,4]
   const [allIDinBundle , setAllIDinBundle] = useState([]);
+  const [userArray] = useState(userList);
+  const [userID, setUserID] = useState(0);
+  const [userEmail, setUserEmail] = useState(userList[userID].email);
+  const [userPassword, setUserPassword] = useState(userList[userID].password);
   const [userName, setUserName] = useState(userList[userID].username);
   const [userType, setUserType] = useState(userList[userID].accountType);
   const [userBalance, setUserBalance] = useState(userList[userID].balance);
@@ -217,7 +221,14 @@ function findCommonMatches() {
     userWarnings,
     setUserWarnings,
     userPraises,
-    setUserPraises
+    setUserPraises,
+    userEmail,
+    setUserEmail,
+    userPassword,
+    setUserPassword,
+    userList,
+    userID,
+    setUserID,
   };
 
   return (

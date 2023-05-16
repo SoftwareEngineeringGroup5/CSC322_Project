@@ -1,34 +1,36 @@
-
 import React, { useContext, useState , useEffect} from 'react'
 import { ShopContext } from '../../context/shop-context';
-import { Navbar } from '../../components/navbar';
 import { Stack, Button, Box, Paper, TextField, Typography, Container } from '@mui/material';
-import { PRODUCTS } from '../../products';
+import BadWordsFilter from 'bad-words';
 
 export const DisplayProduct = (props) => {
-  const {id, productName, price, productImage, reviews} = props.data;
-  const {addToCart} = useContext(ShopContext);
-  const {cartItems} = useContext(ShopContext);
+  const { id, productName, price, productImage, reviews } = props.data;
+  const { addToCart } = useContext(ShopContext);
+  const { cartItems } = useContext(ShopContext);
+  const { userName, userType } = useContext(ShopContext)
   const cartItemAmount = cartItems[id];
-
   const [reviewsState, setReviewsState] = useState(reviews);
+  const filter = new BadWordsFilter();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    const newComment = formData.get('comment');
-    const updatedReviews = [...reviewsState, newComment];
-    setReviewsState(updatedReviews);
+    var newComment = formData.get('comment');
+    if (userType === "Visitor" && filter.isProfane(newComment)) {
+      newComment = ""
+    }
+    if (userType === "Customer" && filter.isProfane(newComment)) {
+      const updatedReviews = [...reviewsState, filter.clean(newComment)];
+      setReviewsState(updatedReviews);
+    }
 
-    reviews.push(newComment)
     console.log(reviews);
     e.target.reset();
   };
 
   console.log(reviews);
   const DisplayComments = () => {
-
     return (
       <Stack spacing={1}>
         {reviewsState.map((comment, index) => (

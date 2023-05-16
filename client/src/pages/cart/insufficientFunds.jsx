@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography"
 import { Box, Button, Link } from "@mui/material";
+
 export const InsufficientFunds = () => {
     return (
         <Box
@@ -13,6 +14,7 @@ export const InsufficientFunds = () => {
             <Typography m={20} fontSize={64}>
                 Insufficient funds! 1 warning issued
             </Typography>
+
             <Link to="/cart">
                 <Button
                     variant="contained"

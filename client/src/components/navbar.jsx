@@ -215,8 +215,8 @@ export const EmployeeNavbar = () => {
         <Link to="/build"> 
           <Tooltip title="Build">
             <IconButton disableRipple >
-              <Badge color="secondary" fontSize="large">
-                <ShoppingCart />
+              <Badge color="secondary">
+                <ConstructionIcon fontSize="large" />
               </Badge>
             </IconButton>
           </Tooltip>

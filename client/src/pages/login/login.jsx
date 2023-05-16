@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "@mui/material/Link"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
@@ -10,18 +10,31 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { ShopContext } from "../../context/shop-context";
 
 export const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [account, setAccount] = useState("");
+    const {userList, userID, setUserID} = useContext(ShopContext)
+    const {userEmail, setUserEmail} = useContext(ShopContext);
+    const {userPassword, setUserPassword} = useContext(ShopContext);
+    const {userType, setUserType} = useContext(ShopContext);
+
+    const [inputEmail, setInputEmail] = useState("")
+    const [inputPassword, setInputPassword] = useState("")
+    const [inputAccount, setInputAccount] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password, account);
-        setEmail("")
-        setPassword("")
-        setAccount("")
+        userList.forEach(element => {
+            if (element.email === inputEmail) {
+                setUserID(element.id);
+                console.log(userID);
+            }
+        });
+
+        console.log(userEmail, userPassword, userType);
+        setUserEmail("")
+        setUserPassword("")
+        setUserType("")
     }
 
     return (
@@ -53,14 +66,14 @@ export const Login = () => {
                         <TextField
                             margin="normal"
                             required
-                            name="email"
-                            label="Email"
-                            id="email-field"
-                            placeholder="example@domain.com"
+                            name="username"
+                            label="Username"
+                            id="user-field"
+                            placeholder="user123"
                             autoFocus
                             autoComplete="current-email"
-                            value={email}
-                            onChange={e => setEmail(e.target.value)}
+                            value={inputEmail}
+                            onChange={e => setInputEmail(e.target.value)}
                         />
 
                         <TextField
@@ -72,8 +85,8 @@ export const Login = () => {
                             id="password-field"
                             placeholder="********"
                             autoComplete="current-password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            value={inputPassword}
+                            onChange={e => setInputPassword(e.target.value)}
                         />
 
                         <FormControl fullWidth sx={{ mt: 2, mb:2}}>
@@ -82,8 +95,8 @@ export const Login = () => {
                                 labelId="account-type-label"
                                 id="account-type-select"
                                 label="Select Account Type"
-                                value={account}
-                                onChange={e => setAccount(e.target.value)}
+                                value={inputAccount}
+                                onChange={e => setInputAccount(e.target.value)}
                                 sx={{ height: 60 }}
                             >
                                 <MenuItem value={"Owner"}>Owner</MenuItem>
