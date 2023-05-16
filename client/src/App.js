@@ -12,8 +12,10 @@ import { OwnerPage } from './pages/application/ownersPage';
 import { Balance } from './pages/balance/balance';
 import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
+import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
+
 
 const user = "Customer";
 
@@ -43,6 +45,7 @@ function App() {
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/balance" element={<Balance/>}/>
+            <Route path="/ratingPage" element={<RatingPage/>}/> 
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
