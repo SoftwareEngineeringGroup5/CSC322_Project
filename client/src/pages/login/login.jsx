@@ -6,35 +6,42 @@ import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
 import { ShopContext } from "../../context/shop-context";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
-    const {userList, userID, setUserID} = useContext(ShopContext)
+    const navigate = useNavigate();
+    const {userArray, userID, setUserID} = useContext(ShopContext)
+    const {setUserName} = useContext(ShopContext);
+    const {setUserBalance} = useContext(ShopContext);
+    const {setUserWarnings} = useContext(ShopContext);
+    const {setUserPraises} = useContext(ShopContext);
     const {userEmail, setUserEmail} = useContext(ShopContext);
     const {userPassword, setUserPassword} = useContext(ShopContext);
     const {userType, setUserType} = useContext(ShopContext);
 
     const [inputEmail, setInputEmail] = useState("")
     const [inputPassword, setInputPassword] = useState("")
-    const [inputAccount, setInputAccount] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        userList.forEach(element => {
-            if (element.email === inputEmail) {
-                setUserID(element.id);
-                console.log(userID);
+        const found = userArray.find(element => element.email === inputEmail) 
+        console.log(userArray, found)
+        
+        if (found !== undefined){
+            if(found.password === inputPassword) {
+                console.log("login successful!");
+                setUserName(found.username)
+                setUserID(found.id)
+                setUserBalance(found.balance)
+                setUserWarnings(found.warnings)
+                setUserPraises(found.praises)
             }
-        });
+            navigate('/')
+        }
 
-        console.log(userEmail, userPassword, userType);
-        setUserEmail("")
-        setUserPassword("")
-        setUserType("")
+        setInputEmail("")
+        setInputPassword("")
     }
 
     return (
@@ -62,14 +69,14 @@ export const Login = () => {
                                 alignItems: 'center',
                                 justifyContent: 'center' }}
                     >
-
+                        
                         <TextField
                             margin="normal"
                             required
-                            name="username"
-                            label="Username"
-                            id="user-field"
-                            placeholder="user123"
+                            name="email"
+                            label="Email"
+                            id="email-field"
+                            placeholder="example@domain.com"
                             autoFocus
                             autoComplete="current-email"
                             value={inputEmail}
@@ -88,8 +95,8 @@ export const Login = () => {
                             value={inputPassword}
                             onChange={e => setInputPassword(e.target.value)}
                         />
-
-                        <FormControl fullWidth sx={{ mt: 2, mb:2}}>
+                        <br/>
+                        {/* <FormControl fullWidth sx={{ mt: 2, mb:2}}>
                             <InputLabel id="account-type-label">Select Account Type</InputLabel>
                             <Select
                                 labelId="account-type-label"
@@ -103,7 +110,7 @@ export const Login = () => {
                                 <MenuItem value={"Employee"}>Employee</MenuItem>
                                 <MenuItem value={"Customer"}>Customer</MenuItem>
                             </Select>
-                        </FormControl>
+                        </FormControl> */}
                         
                         <Button
                             type="submit"
