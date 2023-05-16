@@ -10,7 +10,7 @@ import { Viewproduct } from "./pages/viewProductPages/viewproduct";
 import { ApplicatonPage }from "./pages/application/applicationPage" ;
 import { OwnerPage } from './pages/application/ownersPage';
 import { Balance } from './pages/balance/balance';
-import { FlaskProductList } from "./FlaskProductList";
+//import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
@@ -25,7 +25,7 @@ import { useContext } from 'react';
 const NavbarController = () => {
   const {userID} = useContext(ShopContext)
   switch(userList[userID].accountType) {
-    case "Visitor":   return (<VisitorNavbar/>)
+    case "Visitor":   return (<VisitorNavbar/>);
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);
     case "Owner":     return (<OwnerNavbar/>);
@@ -46,7 +46,6 @@ function App() {
             <Route path="/" element={<Shop/>}/>
             <Route path="/cart" element={<Cart/>}/>
             <Route path='/product/:productlinkID' element={<Viewproduct/>}/> 
-            <Route path='/flaskproduct' element={<FlaskProductList/>}/> 
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
