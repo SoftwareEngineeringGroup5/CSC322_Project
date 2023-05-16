@@ -17,17 +17,15 @@ import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './com
 import { ChatPage } from './Chatbox/ChatPage';
 import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
 import { FailedPurchase } from './pages/cart/failedPurchase';
-
 import { ShopContext } from './context/shop-context';
 import { userList } from './pages/userList';
 import { WishList } from './pages/shop/wishList';
-
-
-const userID = 2;
+import { useContext } from 'react';
 
 const NavbarController = () => {
+  const {userID} = useContext(ShopContext)
   switch(userList[userID].accountType) {
-    case "Visitor":   return (<VisitorNavbar/>)
+    case "Visitor":   return (<VisitorNavbar/>);
     case "Customer":  return (<CustomerNavbar/>);
     case "Employee":  return (<EmployeeNavbar/>);
     case "Owner":     return (<OwnerNavbar/>);
