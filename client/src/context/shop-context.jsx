@@ -22,12 +22,23 @@ const getDefaultBundle = () => {
   return bundle;
 };
 
+const getDefaultWishlist = () => {
+  let wishlist = {};
+  for (let i = 1; i < PRODUCTS.length + 1; i++) {
+    wishlist[i] = 0;
+  }
+  return wishlist;
+}
+
+const userID = 2;
+
 export const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
-  const [bundleItems, setBundleItems] = useState(getDefaultBundle());
-  const [currentcat, setcurrentcat] = useState([]);
+  const [bundleItems, setBundleItems] = useState(getDefaultBundle()); // {1:0,2:0}
+  const [wishlist, setWishlist] =useState(getDefaultWishlist())
+  const [currentcat, setcurrentcat] = useState([]); //["Motherboard",CPU]
   const [suggestionRating, setSuggestionRating] = useState(0);
-  const [bundleMatch, setBundleMatch] = useState([]);
+  const [bundleMatch, setBundleMatch] = useState([]); //[1,2,3,4]
   const [allIDinBundle , setAllIDinBundle] = useState([]);
   const [userArray] = useState(userList);
   const [userID, setUserID] = useState(0);
@@ -120,19 +131,20 @@ function findCommonMatches() {
     setAllIDinBundle([]);
   };
 
-  const checkconsolelogs = () =>{
-    console.log(findCommonMatches())
-    console.log(getAllKeysInBundle())
-    console.log(bundleMatch)
-    console.log(allIDinBundle)
-    console.log(currentcat)
-  }
+
 
   const addToBundle = (itemId) => {
+    console.log(allIDinBundle)
+    if (allIDinBundle.includes(itemId)){
+      return
+    }else{
     setBundleItems((prev) => ({ ...prev, [itemId]: 1}));
     addBundleCategory(itemId);
+    setBundleMatch(findCommonMatches());
+    setAllIDinBundle(getAllKeysInBundle());
+    };
+    checkconsolelogs()
   };
-
   
 
   const removeFromBundle = (itemId) => {
@@ -141,6 +153,22 @@ function findCommonMatches() {
     setBundleMatch(findCommonMatches());
     setAllIDinBundle(getAllKeysInBundle());
   };
+
+
+  const checkconsolelogs = () =>{
+    console.log(findCommonMatches())
+    console.log(getAllKeysInBundle())
+    console.log(bundleMatch)
+    console.log(allIDinBundle)
+    console.log(currentcat)
+  }
+
+  const addToWishlist = (itemId) => {
+    setWishlist((prev) => ({ ...prev, [itemId]: 1}));
+  };
+  const removeFromWishlist = (itemId) => {
+    setWishlist((prev) => ({ ...prev, [itemId]: 0}));
+  }
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
@@ -186,6 +214,10 @@ function findCommonMatches() {
     setUserType,
     userBalance,
     setUserBalance,
+    addToWishlist,
+    removeFromWishlist,
+    wishlist,
+
     userWarnings,
     setUserWarnings,
     userPraises,

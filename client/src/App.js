@@ -15,10 +15,15 @@ import { Messages } from './pages/messages/messages';
 import { RatingPage } from './pages/build/Rating/ratingPage';
 import { VisitorNavbar,CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
 import { ChatPage } from './Chatbox/ChatPage';
-import { InsufficientFunds } from './pages/cart/insufficientFunds';
-import { userList } from './pages/userList';
+import { SuccessfulPurchase } from './pages/cart/successfulPurchase';
+import { FailedPurchase } from './pages/cart/failedPurchase';
 
-const userID = 2;
+import { ShopContext } from './context/shop-context';
+import { userList } from './pages/userList';
+import { WishList } from './pages/shop/wishList';
+
+
+const userID = 1;
 
 const NavbarController = () => {
   switch(userList[userID].accountType) {
@@ -30,6 +35,8 @@ const NavbarController = () => {
 }
 
 function App() {
+
+
   return (
     <div className="App">
       
@@ -50,7 +57,9 @@ function App() {
             <Route path="/applications" element={<ApplicatonPage/>}/>
             <Route path="/owner" element={<OwnerPage/>}/>
             <Route path="/chat" element={<ChatPage/>}/>
-            <Route path="/insufficientFunds" element={<InsufficientFunds/>}/>
+            <Route path="/sucessfulpurchase" element={<SuccessfulPurchase/>}/>
+            <Route path="/failedpurchase" element={<FailedPurchase/>}/>
+            <Route path='/wishlist' element={<WishList/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>

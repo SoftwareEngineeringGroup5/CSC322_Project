@@ -1,4 +1,3 @@
-
 export const userList = [
     {
         id: 0,
@@ -6,7 +5,6 @@ export const userList = [
         username: "jiewei123",
         balance: 999999
     },
-    
     {
         id: 1,
         accountType: "Employee",
@@ -17,7 +15,6 @@ export const userList = [
         warnings: 0,
         praises: 0,
     },
-
     {
         id: 2,
         applicationStatus: "approved",
@@ -30,6 +27,7 @@ export const userList = [
         praises: 0,
     },
     
+
     {
         id: 3,
         accountType: "Visitor",

@@ -11,7 +11,7 @@ export const Filterpanel = () => {
 
   const navigate = useNavigate();
 
-  const {resetBundleItem} = useContext(ShopContext);
+  const {resetBundleItem,checkconsolelogs} = useContext(ShopContext);
   return (
     <div>
       <div className='Suggested Configs'>
@@ -21,6 +21,7 @@ export const Filterpanel = () => {
         <div className='suggested-list'>
         <button className='suggested-button' onClick={ () => resetBundleItem()} >Create My Own</button>
         <button className='suggested-button' onClick={ () => navigate("/ratingpage")} >⭐Rate Configs⭐</button> 
+        <button className='suggested-button' onClick={() => checkconsolelogs()}>Consolelog</button>
           {SUGGESTEDCOFIGS.map((Suggested) => (
             <SuggestedConfig data = {Suggested} />
           ))}
