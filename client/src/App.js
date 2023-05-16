@@ -21,6 +21,7 @@ import { FailedPurchase } from './pages/cart/failedPurchase';
 import { ShopContext } from './context/shop-context';
 import { userList } from './pages/userList';
 import { WishList } from './pages/shop/wishList';
+import { FeedbackPage } from './pages/Feedback/complaintPage';
 
 
 const userID = 1;
@@ -60,6 +61,8 @@ function App() {
             <Route path="/sucessfulpurchase" element={<SuccessfulPurchase/>}/>
             <Route path="/failedpurchase" element={<FailedPurchase/>}/>
             <Route path='/wishlist' element={<WishList/>}/>
+            <Route path='/feedback' element={<FeedbackPage/>}/>
+          
           </Routes>
         </Router>
       </ShopContextProvider>

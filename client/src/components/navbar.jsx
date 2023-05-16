@@ -101,7 +101,6 @@ export const CustomerNavbar = () => {
             </IconButton>
           </Tooltip>
         </Link>
-        
       </Box>
 
       <Box sx={{ p: 2.5, alignItems: "flex-end" }}>
@@ -216,7 +215,17 @@ export const EmployeeNavbar = () => {
           <Tooltip title="Build">
             <IconButton disableRipple >
               <Badge color="secondary" fontSize="large">
-                <ShoppingCart />
+              <ConstructionIcon fontSize="large" />
+              </Badge>
+            </IconButton>
+          </Tooltip>
+        </Link>
+
+        <Link to ="/cart"> 
+          <Tooltip title="Cart">
+            <IconButton disableRipple >
+              <Badge color="secondary">
+                <ShoppingCart fontSize="large" />
               </Badge>
             </IconButton>
           </Tooltip>
