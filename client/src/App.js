@@ -13,6 +13,7 @@ import { Balance } from './pages/balance/balance';
 import { FlaskProductList } from "./FlaskProductList";
 import { Messages } from './pages/messages/messages';
 import { CustomerNavbar, EmployeeNavbar, OwnerNavbar } from './components/navbar';
+import {ChatPage} from './Chatbox/ChatPage';
 
 const user = "Customer";
 
@@ -38,10 +39,13 @@ function App() {
             <Route path="/cart" element={<Cart/>}/>
             <Route path='/product/:productlinkID' element={<Viewproduct/>}/> 
             <Route path='/flaskproduct' element={<FlaskProductList/>}/> 
-            <Route path="/login" element={<Login/>}/ >
+            <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<SignUp/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/balance" element={<Balance/>}/>
+            <Route path="/applications" element={<ApplicatonPage/>}/>
+            <Route path="/owner" element={<OwnerPage/>}/>
+            <Route path="/chat" element={<ChatPage/>}/>
           </Routes>
         </Router>
       </ShopContextProvider>
