@@ -237,6 +237,7 @@ export const EmployeeNavbar = () => {
               <Badge color="secondary">
                 <ConstructionIcon fontSize="large" />
               </Badge>
+              </Badge>
             </IconButton>
           </Tooltip>
         </Link>

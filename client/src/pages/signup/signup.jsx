@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { ShopContext } from '../../context/shop-context';
+import { useNavigate } from 'react-router-dom';
 
 export const SignUp = () => {
     const {userArray, setUserArray, userID, setUserID} = useContext(ShopContext)
@@ -17,6 +18,7 @@ export const SignUp = () => {
     const {userEmail, setUserEmail} = useContext(ShopContext);
     const {userPassword, setUserPassword} = useContext(ShopContext);
     const {userType, setUserType} = useContext(ShopContext);
+    const navigate = useNavigate();
 
     const [inputEmail, setInputEmail] = useState('');
     const [inputUsername, setInputUsername] = useState('');
@@ -24,6 +26,7 @@ export const SignUp = () => {
     const [inputConfirm, setInputConfirm] = useState('');
 
     const handleSubmit = (e) => {
+        navigate("/login")
         e.preventDefault();
         if (inputPassword != inputConfirm) {
             console.log("mismatched passwords!")
@@ -121,7 +124,7 @@ export const SignUp = () => {
                         />
 
                         <Box mt={1}>
-                            <Button
+                            <Button onClick={() => navigate("/login")}
                                 type="submit"
                                 variant="contained"
                                 size="medium" 

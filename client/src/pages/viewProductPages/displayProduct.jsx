@@ -26,6 +26,7 @@ export const DisplayProduct = (props) => {
     }
 
     console.log(reviews);
+    reviews.push(newComment);
     e.target.reset();
   };
 
